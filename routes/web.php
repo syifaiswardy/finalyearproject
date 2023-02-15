@@ -18,6 +18,7 @@ use App\Http\Controllers\homepageControl;
 //     return view('welcome');
 // });
 Route::get("/",[homepageControl::class,"index"]);
+Route::get("/redirect",[homepageControl::class,"redirectFunct"]);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
