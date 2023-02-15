@@ -71,14 +71,14 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="submenu">
-                                <a href="javascript:;">Bookings</a>
+                                <a href="#chefs">Bookings</a>
                                 <ul>
                                     <li><a href="#">Jamming</a></li>
                                     <li><a href="#">Recording</a></li>
                                     <li><a href="#">Music Class</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="#top" class="active">Testimonial</a></li>
+                            <li class="scroll-to-section"><a href="#menu">Testimonial</a></li>
                             <li class="scroll-to-section"><a href="#about">About Us</a></li>
                            	
                         <li>
@@ -221,29 +221,29 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Booking Area Starts ***** -->
     <section class="section" id="chefs">
         <div class="container">
-            <div class="row">
-                <!-- <div class="col-lg-4 offset-lg-4 text-center">
+            <!-- <div class="row">
+                <div class="col-lg-4 offset-lg-4 text-center">
                     <div class="section-heading">
                         <h6>Our Chefs</h6>
                         <h2>We offer the best ingredients for you</h2>
                     </div>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
             <div class="row">
                 <div class="col-lg-4">
                     <div class="chef-item">
                         <div class="thumb">
                             <div class="overlay"></div>
-                            <ul class="social-icons">
+                            <!-- <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                            <img src="assets/images/chefs-01.jpg" alt="Chef #1">
+                            </ul> -->
+                            <img src="assets/images/jamming.jpg" alt="Chef #1">
                         </div>
                         <div class="down-content">
-                            <h4>Randy Walker</h4>
-                            <span>Pastry Chef</span>
+                            <h4 href="/booking">Jamming Session</h4>
+                            <span></span>
                         </div>
                     </div>
                 </div>
@@ -251,16 +251,17 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="chef-item">
                         <div class="thumb">
                             <div class="overlay"></div>
-                            <ul class="social-icons">
+                            <!-- <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                            <img src="assets/images/chefs-02.jpg" alt="Chef #2">
+                            </ul> -->
+                            <!-- <button class="button">Book now</button> -->
+                            <img src="assets/images/recording.jpg" alt="Chef #2">
                         </div>
                         <div class="down-content">
-                            <h4>David Martin</h4>
-                            <span>Cookie Chef</span>
+                            <h4>Recording Session</h4>
+                            <span></span>
                         </div>
                     </div>
                 </div>
@@ -268,16 +269,16 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="chef-item">
                         <div class="thumb">
                             <div class="overlay"></div>
-                            <ul class="social-icons">
+                            <!-- <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google"></i></a></li>
-                            </ul>
-                            <img src="assets/images/chefs-03.jpg" alt="Chef #3">
+                            </ul> -->
+                            <img src="assets/images/music-class.jpg" alt="Chef #3">
                         </div>
                         <div class="down-content">
-                            <h4>Peter Perkson</h4>
-                            <span>Pancake Chef</span>
+                            <h4>Music Class Session</h4>
+                            <span></span>
                         </div>
                     </div>
                 </div>
@@ -285,46 +286,13 @@ https://templatemo.com/tm-558-klassy-cafe
         </div>
     </section>
     <!-- ***** Booking Area Ends ***** -->
-    <!-- ***** About Area Starts ***** -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="">
-                        <div class="section-heading">
-                            <h6>About Us</h6>
-                            <h2>We Leave A Delicious Memory For You</h2>
-                        </div>
-                        <p>Klassy Cafe is one of the best <a href="https://templatemo.com/tag/restaurant" target="_blank" rel="sponsored">restaurant HTML templates</a> with Bootstrap v4.5.2 CSS framework. You can download and feel free to use this website template layout for your restaurant business. You are allowed to use this template for commercial purposes. <br><br>You are NOT allowed to redistribute the template ZIP file on any template donwnload website. Please contact us for more information.</p>
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-01.jpg" alt="">
-                            </div>
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-02.jpg" alt="">
-                            </div>
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-03.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="right-content">
-                        <div class="thumb">
-                            <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
-                            <img src="assets/images/about-video-bg.jpg" alt="">
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </section>
-    <!-- ***** About Area Ends ***** -->
+    
 
-    <!-- ***** Menu Area Starts ***** -->
+    <!-- ***** Testimonial Area Starts ***** -->
     <section class="section" id="menu">
-        <div class="container">
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+    <div class="elfsight-app-2bc11edb-3e30-4db4-bf7c-923b3e6f0352"></div>
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="section-heading">
@@ -411,11 +379,42 @@ https://templatemo.com/tm-558-klassy-cafe
                     </div>
                 </div>
             </div>
+        </div> -->
+    </section>
+    <!-- ***** Testimonial Area Ends ***** -->
+    <!-- ***** About Area Starts ***** -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="">
+                    <div class="">
+                        <div class="section-heading">
+                            <h6>About Us</h6>
+                            <h2>A Music Studio in Bukit Mahkota, Bangi</h2>
+                        </div>
+                        <p>Vidivox Studios - exclusive, acoustic and spacious. Special design for professional and amateur band and singers.</p>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15939.073838668859!2d101.7944604!3d2.8830129!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdc8ac345a1b0b%3A0xe2b185fa21844962!2sVidiVox%20Studios!5e0!3m2!1sen!2smy!4v1676486396627!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+                                <!-- <img src="assets/images/about-thumb-02.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="right-content">
+                        <div class="thumb">
+                            <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
+                            <img src="assets/images/about-video-bg.jpg" alt="">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
         </div>
     </section>
-    <!-- ***** Menu Area Ends ***** -->
-
-    
+    <!-- ***** About Area Ends ***** -->
     <!-- ***** Menu Area Starts ***** -->
     <!-- <section class="section" id="offers">
         <div class="container">
@@ -691,21 +690,19 @@ https://templatemo.com/tm-558-klassy-cafe
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i></a></li>
                             </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/images/white-logo.png" alt=""></a>
+                        <a href="index.html"><img src="assets/images/vidivox-logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p>© Copyright Klassy Cafe Co.
-                        
-                        <br>Design: TemplateMo</p>
+                        <p>© Copyright Vidivox Studio</p>
                     </div>
                 </div>
             </div>
