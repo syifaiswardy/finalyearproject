@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homepageControl;
-
+use App\Http\Controllers\bookingPage;
+use App\Http\Controllers\calendarTest;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,8 @@ use App\Http\Controllers\homepageControl;
 //     return view('welcome');
 // });
 Route::get("/",[homepageControl::class,"index"]);
+Route::get("/booking",[bookingPage::class,"index2"]);
+
 Route::get("/redirect",[homepageControl::class,"redirectFunct"]);
 Route::middleware([
     'auth:sanctum',
