@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\booking;
+
 class bookingPage extends Controller
 {
     function index2(){
@@ -19,4 +20,9 @@ class bookingPage extends Controller
         }
         return view ("booking",['events'=> $events]);
     }
+
+    function add_data(){
+        return view("bookForm");
+    }
+
 }
