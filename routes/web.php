@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homepageControl;
 use App\Http\Controllers\bookingPage;
-use App\Http\Controllers\calendarTest;
+use App\Http\Controllers\bookingTypeControl;
+use App\Http\Controllers\roomControl;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,9 @@ use App\Http\Controllers\calendarTest;
 Route::get("/",[homepageControl::class,"index"]);
 Route::get("/booking",[bookingPage::class,"index2"]);
 Route::get("/bookform",[bookingPage::class,"add_data"]);
+
+Route::get("/bookingtype",[bookingTypeControl::class,"show"]);
+Route::get("/room",[roomControl::class,"showRoom"]);
 
 Route::get("/redirect",[homepageControl::class,"redirectFunct"]);
 Route::middleware([

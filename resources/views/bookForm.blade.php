@@ -42,15 +42,15 @@ https://templatemo.com/tm-558-klassy-cafe
   <!-- endinject -->
 
   <script>
-    jQuery(document).ready(function() {
-        jQuery("#selectId").change(function() {
-            if (jQuery(this).val() === 'recording'){ 
-                jQuery('input[name=other_input]').show();   
-            } else {
-                jQuery('input[name=other_input]').hide(); 
-            }
-        });
-    });
+    // jQuery(document).ready(function() {
+    //     jQuery("#selectId").change(function() {
+    //         if (jQuery(this).val() === 'recording'){ 
+    //             jQuery('input[name=other_input]').show();   
+    //         } else {
+    //             jQuery('input[name=other_input]').hide(); 
+    //         }
+    //     });
+    // });
   </script>
   
 </head>
