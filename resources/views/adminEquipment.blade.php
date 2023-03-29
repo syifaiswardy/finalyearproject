@@ -30,7 +30,7 @@
               <div class="card">
                 <div class="card-body">
                 <div class = "float-left">
-                    <h4 class="card-title">Room</h4>
+                    <h4 class="card-title">Instrument Backline/Equipment</h4>
                   </div>
                   <!-- <p class="card-description">
                   </p> -->
@@ -47,7 +47,7 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Room Name</th>
+                          <th>Equipment Name</th>
                           <th></th>
                           <th></th>
                           <th></th>
@@ -59,10 +59,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                      @foreach($room as $display)
+                      @foreach($equip as $display)
                         <tr>
                           <td>{{$display['id']}}</td>
-                          <td>{{$display['room_name']}}</td>
+                          <td>{{$display['equip_name']}}</td>
                           <td></td>
                           <td></td>
                           <td></td>

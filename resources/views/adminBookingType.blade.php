@@ -8,8 +8,6 @@
 
   <title>Vidivox Studios Admin</title>
 
-  
-
   @include("admin.css")
   
 </head>
@@ -31,9 +29,17 @@
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Booking Types</h4>
-                  <p class="card-description">
-                  </p>
+                  <div class = "float-left">
+                    <h4 class="card-title">Booking Types</h4>
+                  </div>
+                  <!-- <p class="card-description">
+                  </p> -->
+                  <div class = "float-right">
+                  <button type="button" class="btn btn-warning btn-icon-text" style="background-color:#D8B237">
+                          <i class="ti-plus btn-icon-prepend"></i>                                                    
+                          Add New
+                  </button>
+                  </div>
                   <div class="table-responsive">
                     <table class="table table-hover">
                       <thead>

@@ -1,20 +1,20 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{url('/redirect')}}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-layout menu-icon"></i>
+              <i class="icon-head menu-icon"></i>
               <span class="menu-title">Customer</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-columns menu-icon"></i>
+              <i class="icon-book menu-icon"></i>
               <span class="menu-title">Bookings</span>
               <i class="menu-arrow"></i>
             </a>
@@ -26,8 +26,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" aria-expanded="false" aria-controls="charts">
-              <i class="icon-bar-graph menu-icon"></i>
+            <a class="nav-link" href="{{url('/equipment')}}" aria-expanded="false" aria-controls="charts">
+              <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Equipment Details</span>
             </a>
             
