@@ -8,8 +8,9 @@ use App\Models\booking;
 class bookingPage extends Controller
 {
     function index2(){
-        $bookings = booking::all();
         $events = array();
+        $bookings = booking::all();
+        
 
         foreach($bookings as $book){
             $events[]=[

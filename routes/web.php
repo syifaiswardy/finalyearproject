@@ -19,10 +19,14 @@ use App\Http\Controllers\roomControl;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+//guest
 Route::get("/",[homepageControl::class,"index"]);
+//customer and guest
 Route::get("/booking",[bookingPage::class,"index2"]);
 Route::get("/bookform",[bookingPage::class,"add_data"]);
 
+//admin
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);
 Route::get("/room",[roomControl::class,"showRoom"]);
 
