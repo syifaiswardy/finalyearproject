@@ -6,6 +6,9 @@ use App\Http\Controllers\bookingPage;
 use App\Http\Controllers\bookingTypeControl;
 use App\Http\Controllers\roomControl;
 use App\Http\Controllers\equipControl;
+use App\Http\Controllers\customerControl;
+use App\Http\Controllers\custBookingControl;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +34,9 @@ Route::get("/bookform",[bookingPage::class,"add_data"]);
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);
 Route::get("/room",[roomControl::class,"showRoom"]);
 Route::get("/equipment",[equipControl::class,"showEquip"]);
+Route::get("/customer",[customerControl::class,"showCust"]);
+Route::get("/custbook",[custBookingControl::class,"showBook"]);
+
 
 Route::get("/redirect",[homepageControl::class,"redirectFunct"]);
 Route::middleware([

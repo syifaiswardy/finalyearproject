@@ -29,8 +29,8 @@
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                <div class = "float-left">
-                    <h4 class="card-title">Instrument Backline/Equipment</h4>
+                  <div class = "float-left">
+                    <h4 class="card-title">Customer Details</h4>
                   </div>
                   <!-- <p class="card-description">
                   </p> -->
@@ -40,17 +40,13 @@
                           Add New
                   </button>
                   </div>
-                  <p class="card-description">
-                  </p>
                   <div class="table-responsive">
                     <table class="table table-hover">
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Equipment Name</th>
-                          <th>Rent Price</th>
-                          <th></th>
-                          <th></th>
+                          <th>Full Name</th>
+                          <th>Email</th>
                           <th></th>
                           <th></th>
                           <th></th>
@@ -59,20 +55,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                      @foreach($equip as $display)
+                      @foreach($cust as $display)
                         <tr>
-                          <td>{{$display['id']}}</td>
-                          <td>{{$display['equip_name']}}</td>
-                          <td>
-                          @if ($display['rent_price'] == NULL)
-                          <label>RM 0.00 (FREE)</label>
-                          @else
-                          {{$display['rent_price']}}
-                          </td>
-                          @endif
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <td>{{$display->id}}</td>
+                          <td>{{$display->name}}</td>
+                          <td>{{$display->email}}</td>
                           <td></td>
                           <td></td>
                           <td></td>
@@ -96,6 +83,34 @@
             </div>
           </div>
 
+            <!-- <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Advanced Table</p>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table id="example" class="display expandable-table" style="width:100%">
+                          <thead>
+                            <tr>
+                              <th>Quote#</th>
+                              <th>Product</th>
+                              <th>Business type</th>
+                              <th>Policy holder</th>
+                              <th>Premium</th>
+                              <th>Status</th>
+                              <th>Updated at</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                      </table>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->

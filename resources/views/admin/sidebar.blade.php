@@ -7,7 +7,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="{{url('/customer')}}" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Customer</span>
             </a>
@@ -20,7 +20,7 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="">Customer Bookings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('/custbook')}}">Customer Bookings</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('/bookingtype')}}">Booking Types</a></li>
               </ul>
             </div>

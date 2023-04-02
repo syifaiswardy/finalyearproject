@@ -13,6 +13,7 @@ class bookingTypeControl extends Controller
 
     function show(){
         $data = booking_type::all();
+        $data = booking_type::paginate(5);
         return view("adminBookingType",['list'=>$data]);
     }
 }

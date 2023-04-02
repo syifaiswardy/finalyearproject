@@ -89,6 +89,9 @@
                       @endforeach
                       </tbody>
                     </table>
+                    <span>
+                        {{$list->links()}}
+                    </span>
                   </div>
                 </div>
               </div>
