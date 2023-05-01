@@ -84,11 +84,17 @@ https://templatemo.com/tm-558-klassy-cafe
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <label for="exampleInputUsername1">Start Date and Time</label>
-            <input type="datetime-local" class="form-control" id="exampleInputUsername1" placeholder="StartDate">
+        <label for="startDate">Start Date</label>
+        <input type="text" class="form-control" id="startDate" name="startDate" readonly>
+        <label for="endDate">End Date</label>
+        <input type="text" class="form-control" id="endDate" name="endDate" readonly>
+
+
+            <label for="exampleInputUsername1">Start Time</label>
+            <input type="time" class="form-control" id="startTime" placeholder="StartTime">
           <span id="titleError" class="text-danger"></span>
-            <label for="exampleInputUsername1">End Date and Time</label>
-            <input type="datetime-local" class="form-control" id="exampleInputUsername1" placeholder="EndDate">
+            <label for="exampleInputUsername1">End Time</label>
+            <input type="time" class="form-control" id="endDate" placeholder="EndTime">
 
             <div class="form-group">
                       <label for="exampleInputEmail1">Choose Booking Type </label>
@@ -143,7 +149,7 @@ https://templatemo.com/tm-558-klassy-cafe
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
+          <button type="button" id="saveBtn" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>
@@ -153,6 +159,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Footer Start ***** -->
     @include("customer.footer")
     <!-- ***** Footer End ***** -->
+
     <!-- fullCalendar Script 
     error cannot display data from database to calendar-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -170,12 +177,16 @@ https://templatemo.com/tm-558-klassy-cafe
                 selectable: true,
                 selectHelper: true,
                 select: function (start, end, allDays){
+                    $('#startDate').val(start.format('DD-MM-YYYY'));
+                    $('#endDate').val(end.format('DD-MM-YYYY'));
                     $('#bookingModal').modal('toggle');
                 }        
                 
             })
         });
     </script>
+
+    <!-- Recording packages javascript and style -->
       <style>
         #recording {
             display: none;
