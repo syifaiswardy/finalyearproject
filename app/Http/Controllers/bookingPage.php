@@ -14,9 +14,9 @@ class bookingPage extends Controller
 
         foreach($bookings as $book){
             $events[]=[
-                'title' =>$book->booking_title,
-                'start' =>$book->start_dateTime,
-                'end' =>$book->end_dateTime,
+                'title' =>$book->booked_type,
+                'start' =>$book->start_datetime,
+                'end' =>$book->end_datetime,
             ];
         }
         return view ("booking",['events'=> $events]);
