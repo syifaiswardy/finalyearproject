@@ -40,18 +40,28 @@ https://templatemo.com/tm-558-klassy-cafe
   <!-- inject:css -->
   <link rel="stylesheet" href="public/admin template/css/vertical-layout-light/style.css">
   <!-- endinject -->
-
-  <script>
-    // jQuery(document).ready(function() {
-    //     jQuery("#selectId").change(function() {
-    //         if (jQuery(this).val() === 'recording'){ 
-    //             jQuery('input[name=other_input]').show();   
-    //         } else {
-    //             jQuery('input[name=other_input]').hide(); 
-    //         }
-    //     });
-    // });
-  </script>
+  <style>
+        #recording {
+            display: none;
+          
+        }
+    </style>
+    <script>
+      function togglePackagesSection() {
+          var selectElement = document.getElementById("selectId");
+          var packagesSection = document.getElementById("recording");
+      
+            if (selectElement.value === "1") { // if "Recording" is selected
+                packagesSection.style.display = "block"; // show the "Choose Packages" section
+            }
+            else if(selectElement.value === ""){
+              alert("Please select an option");
+            } 
+            else {
+                packagesSection.style.display = "none"; // hide the "Choose Packages" section
+            }
+        }
+    </script>
   
 </head>
 
@@ -62,7 +72,7 @@ https://templatemo.com/tm-558-klassy-cafe
       
       <!-- partial -->
       <div class="main-panel">  
-      <div class="col-md-6 grid-margin stretch-card">
+        <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Book Now</h4>
@@ -77,39 +87,36 @@ https://templatemo.com/tm-558-klassy-cafe
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Choose Booking Type </label>
-                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                        <select class="form-control" name = "pageSelector" id="selectId">
-                          <option value="jamming">Jamming</option>
-                          <option value="recording">Recording</option>
-                          <option value="music_class">Music Class</option>
+                        <select class="form-control" name = "pageSelector" id="selectId" onchange="togglePackagesSection();">
+                          <option value="">Select option</option>
+                          <option value="0">Jamming</option>
+                          <option value="1">Recording</option>
+                          <option value="2">Music Class</option>
                         </select>
 
-                        <div class="col-md-6">
-                          <input type="text" name="other_input" style="display:none" />
-                          <label class="form-check-label" name="other_input" style="display:none">Choose Packages</label>
+                    </div>
+                    <div class="form-group" id="recording">
+                          <label class="form-check-label">Choose Packages</label>
                           <div class="form-check">
-                            <label class="form-check-label" name="other_input" style="display:none">
-                              <input type="radio" class="form-check-input" value="">
+                            <label class="form-check-label" >
+                              <input type="radio" class="form-check-input" name="package" value="fullpackage">
                               Full Package
                             </label>
                           </div>
                           <div class="form-check">
-                            <label class="form-check-label" name="other_input" style="display:none">
-                              <input type="radio" class="form-check-input" value="option2">
+                            <label class="form-check-label" >
+                              <input type="radio" class="form-check-input" name="package" value="halfpackage">
                               Half Package
                             </label>
                           </div>
                           <div class="form-check">
-                            <label class="form-check-label" name="other_input" style="display:none">
-                              <input type="radio" class="form-check-input" value="option3">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="package" value="vocal">
                               Vocal or Voice Recorder Only
                             </label>
                           </div>
-                        </div>
                         
-                        
-                          
-                        
+
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmail1">Choose Room </label>
@@ -162,22 +169,17 @@ https://templatemo.com/tm-558-klassy-cafe
     
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
+    
+
     <script>
+        function toggleDiv(value) {
 
-        $(function() {
-            var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
-            });
-        });
-
+            if (value == "") {
+                alert("Please select an option");
+            }
+            const recording = document.getElementById('recording');
+            recording.style.display = value == recording ? 'block' : 'none';
+        }
     </script>
   <!-- plugins:js -->
   <script src="public/admin template/vendors/js/vendor.bundle.base.js"></script>

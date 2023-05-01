@@ -29,6 +29,7 @@ https://templatemo.com/tm-558-klassy-cafe
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 
+
     </head>
     
     <body>
@@ -67,6 +68,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Backline Instrument End ***** -->
     <!-- ***** Calendar Area Starts ***** -->
     <section class="section" id = "menu">
+      
         <div class = "container">
             <div id="calendar"></div>      
         </div>
@@ -82,8 +84,62 @@ https://templatemo.com/tm-558-klassy-cafe
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <input type="text" class="form-control" id="title">
+            <label for="exampleInputUsername1">Start Date and Time</label>
+            <input type="datetime-local" class="form-control" id="exampleInputUsername1" placeholder="StartDate">
           <span id="titleError" class="text-danger"></span>
+            <label for="exampleInputUsername1">End Date and Time</label>
+            <input type="datetime-local" class="form-control" id="exampleInputUsername1" placeholder="EndDate">
+
+            <div class="form-group">
+                      <label for="exampleInputEmail1">Choose Booking Type </label>
+                        <select class="form-control" name = "pageSelector" id="selectId" onchange="togglePackagesSection();">
+                          <option value="">Select option</option>
+                          <option value="0">Jamming</option>
+                          <option value="1">Recording</option>
+                          <option value="2">Music Class</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group" id="recording">
+                          <label class="form-check-label">Choose Packages</label>
+                          <div class="form-check">
+                            <label class="form-check-label" >
+                              <input type="radio" class="form-check-input" name="package" value="fullpackage">
+                              Full Package
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <label class="form-check-label" >
+                              <input type="radio" class="form-check-input" name="package" value="halfpackage">
+                              Half Package
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="package" value="vocal">
+                              Vocal or Voice Recorder Only
+                            </label>
+                          </div>
+                      </div>
+
+            
+            <label for="exampleInputEmail1">Choose Room </label>
+                      <select class="form-control" name="bookingRoom" id="exampleSelectGender">
+                          <option value="">Studio 1</option>
+                          <option value="">Studio 2</option>
+                          <option value="">Studio 3</option>
+                        </select>
+
+                        <div class="form-group">
+                      <label for="exampleInputConfirmPassword1">Total Fee</label>
+                      <input type="text" class="form-control" id="exampleInputConfirmPassword1" placeholder="RM0.00" readonly>
+                    </div>
+                    <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                        Add another date
+                      </label>
+                    </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -120,7 +176,28 @@ https://templatemo.com/tm-558-klassy-cafe
             })
         });
     </script>
-    
+      <style>
+        #recording {
+            display: none;
+          
+        }
+    </style>
+    <script>
+      function togglePackagesSection() {
+          var selectElement = document.getElementById("selectId");
+          var packagesSection = document.getElementById("recording");
+      
+            if (selectElement.value === "1") { // if "Recording" is selected
+                packagesSection.style.display = "block"; // show the "Choose Packages" section
+            }
+            else if(selectElement.value === ""){
+              alert("Please select an option");
+            } 
+            else {
+                packagesSection.style.display = "none"; // hide the "Choose Packages" section
+            }
+        }
+    </script>
     @include("customer.js")
   </body>
 </html>

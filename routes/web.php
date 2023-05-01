@@ -28,7 +28,7 @@ use App\Http\Controllers\custBookingControl;
 Route::get("/",[homepageControl::class,"index"]);
 //customer and guest
 Route::get("/booking",[bookingPage::class,"index2"]);
-Route::get("/bookform",[bookingPage::class,"add_data"]);
+// Route::get("/bookform",[bookingPage::class,"add_data"]);
 
 //admin
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);
