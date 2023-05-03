@@ -22,12 +22,16 @@ https://templatemo.com/tm-558-klassy-cafe
     @include("customer.css")
 
     <!--fullcalendar cdn-->
+    
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
 
 
     </head>
@@ -35,13 +39,13 @@ https://templatemo.com/tm-558-klassy-cafe
     <body>
     
     <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>   -->
     <!-- ***** Preloader End ***** -->
     
     
@@ -66,43 +70,120 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Backline Instrument Starts ***** -->
 
     <!-- ***** Backline Instrument End ***** -->
+    <!-- ***** Modal Check Availability Starts *****  -->
+    <script>
+      function checkAvailability() {
+        // Retrieve the values of the start date, end date, and studio inputs
+        var startDate = new Date(document.getElementById("startDateTime").value);
+        var endDate = new Date(document.getElementById("endDateTime").value);
+        var studio = document.getElementById("studio").value;
+
+
+        // Set the text of the corresponding labels in the modal to display these values
+        document.getElementById("startDateLabel").innerHTML = startDate.toLocaleString('en-IN', {dateStyle: 'short', timeStyle: 'short'});
+        document.getElementById("endDateLabel").innerHTML = endDate.toLocaleString('en-IN', {dateStyle: 'short', timeStyle: 'short'});
+        document.getElementById("studioLabel").innerHTML = studio;
+
+
+        // Get references to the label elements in the modal body
+        const startDateLabel = document.querySelector('#startDateLabel');
+        const endDateLabel = document.querySelector('#endDateLabel');
+        const studioLabel = document.querySelector('#studioLabel');
+
+
+        // Add an event listener to the "Check Availability" button
+        const checkAvailabilityButton = document.querySelector('#checkAvailable button.btn-primary');
+        checkAvailabilityButton.addEventListener('click', () => {
+          // Get the values of the start date, end date, and studio from the form
+          const startDateTime = new Date(document.querySelector('#startDateTime').value);
+          const endDateTime = new Date(document.querySelector('#endDateTime').value);
+          const studio = document.querySelector('#studio').value;
+
+          // Set the values as the text content of the corresponding label elements in the modal body
+          startDateLabel.textContent = `${startDateTime.toLocaleString('en-IN', {dateStyle: 'short', timeStyle: 'short'})}`;
+          endDateLabel.textContent = `${endDateTime.toLocaleString('en-IN', {dateStyle: 'short', timeStyle: 'short'})}`;
+          studioLabel.textContent = `${studio}`;
+
+        });
+
+      }
+
+    </script>
+    <div class="modal fade" id="checkAvailable" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="checkAvailableLabel">Booking Availability</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-sm">
+                          <label id="startDateLabel"></label>
+                          <label id="endDateLabel"></label>
+                        </div>
+                        <div class="col-sm">
+                          <label style="color:#2C8334;">Available</label>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-sm">
+                          <label id="studioLabel"></label>
+                        </div>
+                        <div class="col-sm">
+                          <label style="color:#2C8334;">Available</label>
+                        </div>
+                      </div>
+                      <div>
+                        <h5 class="modal-title" id="checkAvailableLabel">Other Booking Details</h5>
+                        <br>
+                          <label  style="font-weight:bold;">Booking Type</label><br>
+                          <label id="bookingType"></label><br><br>
+                          <label style="font-weight:bold;">Booking Packages</label><br>
+                          <label id="package"></label><br><br>
+                          <label style="font-weight:bold;">Total Fee</label><br>
+                          <label id="totalfeeLabel"></label><br><br>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" style="background-color:#F0CF65;color:black;">Book</button>
+                    </div>
+                  </div>
+                </div>
+     </div>
+
+                <!-- ***** Modal Check Availability Ends *****  -->
+    
     <!-- ***** Calendar Area Starts ***** -->
     <section class="section" id = "menu">
       
         <div class = "container">
-            <div id="calendar"></div>      
+        <!-- form -->
+        <div>
+                <h1 style="text-align:center;">Book Form
+                </h1> 
         </div>
-      
-    </section>
-    <!-- ***** Calendar Area Ends ***** -->
-    <!-- ***** Modal Area Starts *****  -->
-  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Booking title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <label for="startDate">Start Date</label>
-        <input type="text" class="form-control" id="startDate" name="startDate" readonly>
-        <label for="endDate">End Date</label>
-        <input type="text" class="form-control" id="endDate" name="endDate" readonly>
-
-
-            <label for="exampleInputUsername1">Start Time</label>
-            <input type="time" class="form-control" id="startTime" placeholder="StartTime">
-          <span id="titleError" class="text-danger"></span>
-            <label for="exampleInputUsername1">End Time</label>
-            <input type="time" class="form-control" id="endDate" placeholder="EndTime">
-
-            <div class="form-group">
-                      <label for="exampleInputEmail1">Choose Booking Type </label>
-                        <select class="form-control" name = "pageSelector" id="selectId" onchange="togglePackagesSection();">
+        <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Book Now!</h4>
+                  <form class="forms-sample" action = "" method="">
+                    <div class="form-group">
+                      <label>Start Date and Time</label>
+                      <input type="datetime-local" class="form-control" id="startDateTime" placeholder="StartDate" required>
+                    </div>
+                    <div class="form-group">
+                      <label>End Date and Time</label>
+                      <input type="datetime-local" class="form-control" id="endDateTime" placeholder="EndDate" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Choose Booking Type </label>
+                        <select class="form-control" name = "BookingType" id="selectId" onchange="togglePackagesSection();" required>
                           <option value="">Select option</option>
-                          <option value="0">Jamming</option>
-                          <option value="1">Recording</option>
-                          <option value="2">Music Class</option>
+                          <option value="Jamming" id="selectId">Jamming</option>
+                          <option value="Recording" id="selectId">Recording</option>
+                          <option value="Music Class" id="selectId">Music Class</option>
                         </select>
 
                     </div>
@@ -110,51 +191,63 @@ https://templatemo.com/tm-558-klassy-cafe
                           <label class="form-check-label">Choose Packages</label>
                           <div class="form-check">
                             <label class="form-check-label" >
-                              <input type="radio" class="form-check-input" name="package" value="fullpackage">
+                              <input type="radio" class="form-check-input" name="package" value="Full Package">
                               Full Package
                             </label>
                           </div>
                           <div class="form-check">
                             <label class="form-check-label" >
-                              <input type="radio" class="form-check-input" name="package" value="halfpackage">
+                              <input type="radio" class="form-check-input" name="package" value="Half Package">
                               Half Package
                             </label>
                           </div>
                           <div class="form-check">
                             <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="package" value="vocal">
+                              <input type="radio" class="form-check-input" name="package" value="Vocal or Voice Recorder Only">
                               Vocal or Voice Recorder Only
                             </label>
                           </div>
-                      </div>
+                        
 
-            
-            <label for="exampleInputEmail1">Choose Room </label>
-                      <select class="form-control" name="bookingRoom" id="exampleSelectGender">
-                          <option value="">Studio 1</option>
-                          <option value="">Studio 2</option>
-                          <option value="">Studio 3</option>
-                        </select>
-
-                        <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Total Fee</label>
-                      <input type="text" class="form-control" id="exampleInputConfirmPassword1" placeholder="RM0.00" readonly>
                     </div>
-                    <div class="form-check form-check-flat form-check-primary">
+                    <div class="form-group">
+                    <label>Choose Room </label>
+                      <select class="form-control" name="bookingRoom" id="studio" required>
+                          <option value="Studio 1" id="studio">Studio 1</option>
+                          <option value="Studio 2" id="studio">Studio 2</option>
+                          <option value="Studio 3" id="studio">Studio 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Total Fee</label>
+                      <input type="text" class="form-control" id="totalfee" placeholder="RM0.00" readonly>
+                    </div>
+                    <!-- <div class="form-check form-check-flat form-check-primary">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input">
                         Add another date
                       </label>
-                    </div>
+                    </div> -->
+                    <button type="button" class="btn btn-primary mr-2" style="background-color:#F0CF65;color:black;" data-toggle="modal" data-target="#checkAvailable" onclick="checkAvailability(),togglePackagesSection()">Check Availability</button>
+                    <button type="reset" class="btn btn-light">Reset</button>
+                  </form>
+                </div>
+              </div>
+              <div>
+                <br/><br/>
+                <h1>Calendar
+                </h1> 
+                </div>
+
+               
+              <!-- fullcalendar -->
+            <div id="calendar"></div> 
+            
+            
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="saveBtn" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
-    <!-- ***** Modal Area Ends *****  -->
+        
+    </section>
+    <!-- ***** Calendar Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     @include("customer.footer")
@@ -162,25 +255,24 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <!-- fullCalendar Script 
     error cannot display data from database to calendar-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            var booking = @json($events);
-            //console.log(booking)
+            var test = @json($events);
+            console.log(test)
             $('#calendar').fullCalendar({
                 header:{
                     'left':'prev, next today',
                     'center' : 'title',
                     'right': 'month, agendaWeek, agendaDay'
                 },
-                events : booking,
-                selectable: true,
-                selectHelper: true,
-                select: function (start, end, allDays){
-                    $('#startDate').val(start.format('DD-MM-YYYY'));
-                    $('#endDate').val(end.format('DD-MM-YYYY'));
-                    $('#bookingModal').modal('toggle');
-                }        
+                // events : test,
+                // selectable: true,
+                // selectHelper: true,
+                // select: function (start, end, allDays){
+                //     // $('#startDate').val(start.format('DD-MM-YYYY'));
+                //     // $('#endDate').val(end.format('DD-MM-YYYY'));
+                //     $('#bookingModal').modal('toggle');
+                // },       
                 
             })
         });
@@ -194,11 +286,13 @@ https://templatemo.com/tm-558-klassy-cafe
         }
     </style>
     <script>
+    
+
       function togglePackagesSection() {
           var selectElement = document.getElementById("selectId");
           var packagesSection = document.getElementById("recording");
       
-            if (selectElement.value === "1") { // if "Recording" is selected
+            if (selectElement.value === "Recording") { // if "Recording" is selected
                 packagesSection.style.display = "block"; // show the "Choose Packages" section
             }
             else if(selectElement.value === ""){
@@ -207,7 +301,32 @@ https://templatemo.com/tm-558-klassy-cafe
             else {
                 packagesSection.style.display = "none"; // hide the "Choose Packages" section
             }
-        }
+
+            // Get the selected booking type
+          var bookingType = document.getElementById("selectId").value;
+          
+          // Get the selected package
+          var package = "";
+          if (bookingType == "Recording") {
+            var packageRadios = document.getElementsByName("package");
+            for (var i = 0; i < packageRadios.length; i++) {
+              if (packageRadios[i].checked) {
+                package = packageRadios[i].value;
+                break;
+              }
+            }
+          }
+          else{
+            package = "<em>No package</em>";
+          }
+          
+          // Set the values in the modal
+          document.getElementById("bookingType").innerHTML = bookingType;
+          document.getElementById("package").innerHTML = package;
+       }
+        
+        
+              
     </script>
     @include("customer.js")
   </body>
