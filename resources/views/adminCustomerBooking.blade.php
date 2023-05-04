@@ -46,9 +46,8 @@
                         <tr>
                           <th>ID</th>
                           <th>Full Name</th>
-                          <th>Date</th>
-                          <th>Start Time</th>
-                          <th>End Time</th>
+                          <th>Start DateTime</th>
+                          <th>End DateTime</th>
                           <th>Notes</th>
                           <th>Studio Name</th>
                           <th>Booking Type</th>
@@ -65,24 +64,23 @@
                       <tbody>
                       @foreach($book as $display)
                         <tr>
-                          <td>{{$display["id"]}}</td>
-                          <td>{{$display["name"]}}</td>
-                          <td>{{$display["booking_date"]}}</td>
-                          <td>{{$display["start_time"]}}</td>
-                          <td>{{$display["end_time"]}}</td>
-                          <td>{{$display["booking_notes"]}}</td>
-                          <td>{{$display["booked_room"]}}</td>
-                          <td>{{$display["booked_type"]}}</td>
-                          <td>{{$display["booking_package"]}}</td>
-                          <td>RM {{$display["booking_total"]}}</td>
-                          <td>{{$display["rentEquip"]}}</td>
-                          <td>{{$display["rentEquip_price"]}}</td>
-                          <td>{{$display["file_path"]}}</td>
-                          <td>RM {{$display["total_payment"]}}</td>
-                          <td></td>
-                          <td></td>
+                        <td>{{$display->id}}</td>
+                        <td>{{$display->user_name}}</td>
+                        <td>{{$display->start_datetime}}</td>
+                        <td>{{$display->end_datetime}}</td>
+                        <td>{{$display->booking_notes}}</td>
+                        <td>{{$display->booked_room}}</td>
+                        <td>{{$display->booked_type}}</td>
+                        <td>{{$display->booking_package}}</td>
+                        <td>RM {{$display->booking_total}}</td>
+                        <td>{{$display->rentEquip}}</td>
+                        <td>{{$display->rentEquip_price}}</td>
+                        <td>{{$display->file_path}}</td>
+                        <td>RM {{$display->total_payment}}</td>
+                        <td></td>
+                        <td></td>
                           <td>
-                            <a href="">
+                            <a href="/custbook/add">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m21.7 13.35l-1 1l-2.05-2.05l1-1c.21-.22.56-.22.77 0l1.28 1.28c.22.21.22.56 0 .77M12 18.94l6.07-6.06l2.05 2.05L14.06 21H12v-2.06M4 2h14a2 2 0 0 1 2 2v4.17L16.17 12H12v4.17L10.17 18H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m0 4v4h6V6H4m8 0v4h6V6h-6m-8 6v4h6v-4H4Z"/></svg>
                             </a>
                           </td>

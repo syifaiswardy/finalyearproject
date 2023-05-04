@@ -8,6 +8,7 @@ use App\Http\Controllers\roomControl;
 use App\Http\Controllers\equipControl;
 use App\Http\Controllers\customerControl;
 use App\Http\Controllers\custBookingControl;
+use App\Http\Controllers\profilePage;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,11 @@ use App\Http\Controllers\custBookingControl;
 Route::get("/",[homepageControl::class,"index"]);
 //customer and guest
 Route::get("/booking",[bookingPage::class,"index2"]);
-// Route::get("/bookform",[bookingPage::class,"add_data"]);
+// Route::get("/booking",[bookingPage::class,"show"]);
+Route::get("/bookform",[bookingPage::class,"show"])->middleware('auth');
+Route::post("/recorded",[bookingPage::class,"store"]);
+// Route::get('/profile', [profilePage::class, 'showProfile']);
+Route::get('/profile', [profilePage::class, 'showBooking'])->middleware('auth');
 
 //admin
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);

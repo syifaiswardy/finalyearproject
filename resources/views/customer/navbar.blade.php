@@ -10,21 +10,29 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="">
+                            <li class="submenu">
                                 <a href="{{url('/booking')}}">Bookings</a>
-                                <!-- <ul>
-                                    <li><a href="#">Jamming</a></li>
-                                    <li><a href="#">Recording</a></li>
-                                    <li><a href="#">Music Class</a></li>
-                                </ul> -->
+                                <ul>
+                                
+                                @if (Route::has('login'))
+                                    <li>
+                                        <a href="{{url('/bookform')}}">Booking Form</a>
+                                    </li>                                
+                                    <li>
+                                        <a href="{{url('/profile')}}">Booking Details</a>
+                                    </li>
+                                    
+                                @endif
+                                </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="#menu">Testimonial</a></li>
-                            <li class="scroll-to-section"><a href="#about">About Us</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#menu')}}">Testimonial</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#about')}}">About Us</a></li>
                            	
                         <li>
                         @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
+                                    
                                     <li>
                                         <x-app-layout class="scroll-to-section"></x-app-layout>
                                     </li>
