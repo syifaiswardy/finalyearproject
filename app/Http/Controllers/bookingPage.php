@@ -78,7 +78,7 @@ class bookingPage extends Controller
         $store->save();
     
         // flash success message to session
-        $p->session()->flash('success', 'Booking has been recorded successfully. Click Booking Details to view your booking details and payment');
+        $p->session()->flash('success', 'Booking has been recorded successfully. Click Booking History to view your booking details and payment');
         return redirect('/bookform');
     }
     

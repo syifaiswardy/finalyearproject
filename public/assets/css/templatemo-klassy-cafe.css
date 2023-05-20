@@ -923,13 +923,13 @@ menu
 }
 
 .card1 {
-  background-image: url(../images/menu-item-01.jpg);
+  background-image: url(../images/jamming.jpg);
 }
 .card2 {
-  background-image: url(../images/menu-item-02.jpg);
+  background-image: url(../images/recording.jpg);
 }
 .card3 {
-  background-image: url(../images/menu-item-03.jpg);
+  background-image: url(../images/music-class.jpg);
 }
 .card4 {
   background-image: url(../images/menu-item-04.jpg);
@@ -956,14 +956,14 @@ menu
 
 .title {
   margin: 0;
-  padding: 30px 30px 20px 30px;
+  padding: 30px 40px 8px 30px;
   font-size: 20px;
   font-weight: 700;
   color: #fff;
 }
 
 .description {
-  padding: 0px 30px;
+  padding: 0px 10px;
   color: #fff;
 }
 

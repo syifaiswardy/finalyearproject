@@ -77,7 +77,18 @@ https://templatemo.com/tm-558-klassy-cafe
     <section class="section" id = "menu">
       
       <div class = "container">
-              <div>
+              
+            <div class="card">
+              <!-- fullcalendar -->
+              <h1 style="text-align:center;">Calendar</h1> 
+              <div id="calendar"></div> 
+            
+            </div>
+              <div>&nbsp</div>
+              <div>&nbsp</div>
+              <div>&nbsp</div>
+            
+            <div>
                       <h1 style="text-align:center;">Book Form
                       </h1> 
                       <div class="d-grid gap-2 col-6 mx-auto">
@@ -89,15 +100,7 @@ https://templatemo.com/tm-558-klassy-cafe
                       </div>
                       
               </div>
-              <div>&nbsp</div>
-              <div>&nbsp</div>
-              <div>&nbsp</div>
-        <div class="card">
-              <!-- fullcalendar -->
-            <h1 style="text-align:center;">Calendar</h1> 
-            <div id="calendar"></div> 
-            
-        </div>
+
       </div>
         
     </section>

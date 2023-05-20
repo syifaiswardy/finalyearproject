@@ -11,21 +11,24 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="submenu">
-                                <a href="{{url('/booking')}}">Bookings</a>
+                                <a>Bookings</a>
                                 <ul>
                                 
                                 @if (Route::has('login'))
                                     <li>
+                                        <a href="{{url('/booking')}}">Studio Calendar</a>
+                                    </li>   
+                                    <li>
                                         <a href="{{url('/bookform')}}">Booking Form</a>
                                     </li>                                
                                     <li>
-                                        <a href="{{url('/profile')}}">Booking Details</a>
+                                        <a href="{{url('/profile')}}">Booking History</a>
                                     </li>
                                     
                                 @endif
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="{{url('/#menu')}}">Testimonial</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#offers')}}">Testimonial</a></li>
                             <li class="scroll-to-section"><a href="{{url('/#about')}}">About Us</a></li>
                            	
                         <li>

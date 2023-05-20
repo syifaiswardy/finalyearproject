@@ -9,6 +9,7 @@ use App\Http\Controllers\equipControl;
 use App\Http\Controllers\customerControl;
 use App\Http\Controllers\custBookingControl;
 use App\Http\Controllers\profilePage;
+use App\Http\Controllers\calendarControl;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::get("/room",[roomControl::class,"showRoom"]);
 Route::get("/equipment",[equipControl::class,"showEquip"]);
 Route::get("/customer",[customerControl::class,"showCust"]);
 Route::get("/custbook",[custBookingControl::class,"showBook"]);
+Route::get("/addCustBook",[custBookingControl::class,"showAddBook"]);
+Route::post("/recordedAdmin",[custBookingControl::class,"store"]);
+Route::get("/calendar",[calendarControl::class,"showCalendar"]);
 
 
 Route::get("/redirect",[homepageControl::class,"redirectFunct"]);

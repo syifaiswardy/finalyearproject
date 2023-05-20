@@ -20,6 +20,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
 -->
     @include("customer.css")
+    
     </head>
     
     <body>
@@ -39,9 +40,60 @@ https://templatemo.com/tm-558-klassy-cafe
     @include("customer.navbar")
     <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Main Banner Area Start ***** -->
+    <!-- ***** Modal Check Availability Starts *****  -->
     
-    <!-- ***** Main Banner Area End ***** -->
+    <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="checkAvailableLabel">Payment Details</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                      <form class="forms-sample" action = "/" method="post">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="row-sm">
+                              <label style="font-weight:bold;">Payment can be made by <a style="color:red;">walk-in</a> or by <a style="color:blue;">online banking</a> to this account: </label><br>
+                              <label><a href="" data-toggle="modal" data-target="#QrCode"><em>xxxxxxx-xxxx-xxxxxx Maybank</em></a></label><br><br>
+                              <h6>After done with your payment, Upload your receipt here</h6>
+                            </div>
+                            <div class="row-sm">
+                                  <div class="form-group">
+                                    <input type="file" id="myFile" name="filename">
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-grid gap-2">
+                          <button type="submit" class="btn btn-primary" style="background-color:#F0CF65;color:black;">Upload File</button>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+     </div>
+
+     <div class="modal fade" id="QrCode" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="checkAvailableLabel">Maybank QR Code</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row-sm">
+                          <label><em>xxxxxxx-xxxx-xxxxxx Maybank</em></label>
+                          <img class ="rounded ms-auto d-block" src="assets/images/maybank-qr.jpeg" alt ="Maybank QR Code"></img>
+                        </div>
+                    </div>
+                    
+                  </div>
+                </div>
+     </div>
+
+                <!-- ***** Modal Check Availability Ends *****  -->
     <!-- ***** Calendar Area Starts ***** -->
     <section class="section" id="menu">
         <div class="container">
@@ -65,7 +117,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         @else
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Booking Details</h4>
+                  <h4 class="card-title">Booking History</h4>
                   <div class="table-responsive">
                     
                     <table class="table table-hover">
@@ -86,16 +138,44 @@ https://templatemo.com/tm-558-klassy-cafe
                         <tr>
                           <td>{{$display['start_datetime']}}</td>
                           <td>{{$display['end_datetime']}}</td>
-                          <td>{{$display['booked_type']}}</td>
-                          @if($display['booking_package']==null)
-                          <td>No package</td>
+                          @if($display['booked_type']=='Recording')
+                            <td class="badge badge-danger badge-sm badge-pill">{{$display['booked_type']}}</td>
+                          @elseif($display['booked_type']=='Jamming')
+                            <td class="badge badge-info badge-sm badge-pill">{{$display['booked_type']}}</td>
                           @else
-                          <td>{{$display['booking_package']}}</td>
+                            <td class="badge badge-success badge-sm badge-pill">{{$display['booked_type']}}</td>
                           @endif
+
+                          @if(empty($display['booking_package']))
+                          <td style="color:#grey;">-</td>
+                          @elseif($display['booking_package']=='Full Package')
+                            <td style="color:#E79F5D;font-weight:bold;">{{$display['booking_package']}}</td>
+                          @elseif($display['booking_package']=='Half Package')
+                            <td style="color:#E75D5D;font-weight:bold;">{{$display['booking_package']}}</td>
+                          @else
+                            <td style="color:#E7C15E;font-weight:bold;">{{$display['booking_package']}}</td>
+                          @endif
+                          
+                          @if(empty($display['booking_notes']))
+                          <td><em>No Notes</em></td>
+                          @else
                           <td>{{$display['booking_notes']}}</td>
-                          <td>{{$display['rentEquip']}}</td>
+                          @endif
+
+                          @if(empty($display['rentEquip']))
+                          <td><em>No Equipment needed</em></td>
+                          @else
+                          <td>{{$display['rentEquip']}}</td>    
+                          @endif
+                          <td> RM 0.00 </td>
+                          <td>
+                            <a href="" data-toggle="modal" data-target="#uploadFile">
+                              <img src="assets/images/upload-file-icon.png"></img>
+                            </a>
+                          </td>
                         </tr>
-                        @endforeach
+                      @endforeach
+
                       </tbody>
                     </table>
                     @endif

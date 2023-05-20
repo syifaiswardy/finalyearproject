@@ -35,10 +35,10 @@
                   <!-- <p class="card-description">
                   </p> -->
                   <div class = "float-right">
-                  <button type="button" class="btn btn-warning btn-icon-text" style="background-color:#D8B237">
+                  <a href="/addCustBook" type="button" class="btn btn-warning btn-icon-text" style="background-color:#D8B237">
                           <i class="ti-plus btn-icon-prepend"></i>                                                    
                           Add New
-                  </button>
+                  </a>
                   </div>
                   <div class="table-responsive">
                     <table class="table table-hover">
@@ -68,12 +68,41 @@
                         <td>{{$display->user_name}}</td>
                         <td>{{$display->start_datetime}}</td>
                         <td>{{$display->end_datetime}}</td>
+                        
+                        @if(empty($display->booking_notes))
+                        <td><em>No Notes</em></td>
+                        @else
                         <td>{{$display->booking_notes}}</td>
+                        @endif
+
                         <td>{{$display->booked_room}}</td>
-                        <td>{{$display->booked_type}}</td>
-                        <td>{{$display->booking_package}}</td>
+
+                        @if($display->booked_type=='Recording')
+                            <td class="badge badge-danger badge-sm badge-pill">{{$display->booked_type}}</td>
+                          @elseif($display->booked_type=='Jamming')
+                            <td class="badge badge-info badge-sm badge-pill">{{$display->booked_type}}</td>
+                          @else($display->booked_type=='Music Class')
+                            <td class="badge badge-success badge-sm badge-pill">{{$display->booked_type}}</td>
+                          @endif
+
+                        @if(empty($display->booking_package))
+                          <td style="color:#grey;">-</td>
+                          @elseif($display->booking_package =='Full Package')
+                            <td style="color:#E79F5D;font-weight:bold;">{{$display->booking_package}}</td>
+                          @elseif($display->booking_package =='Half Package')
+                            <td style="color:#E75D5D;font-weight:bold;">{{$display->booking_package}}</td>
+                          @else($display->booking_package =='Voice or Vocal Recording Only')
+                            <td style="color:#E7C15E;font-weight:bold;">{{$display->booking_package}}</td>
+                        @endif
+                        
                         <td>RM {{$display->booking_total}}</td>
-                        <td>{{$display->rentEquip}}</td>
+
+                        @if(empty($display->rentEquip))
+                          <td><em>No Equipment needed</em></td>
+                          @else
+                          <td>{{$display->rentEquip}}</td>    
+                          @endif
+                          
                         <td>{{$display->rentEquip_price}}</td>
                         <td>{{$display->file_path}}</td>
                         <td>RM {{$display->total_payment}}</td>
