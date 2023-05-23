@@ -35,6 +35,9 @@ Route::get("/bookform",[bookingPage::class,"show"])->middleware('auth');
 Route::post("/recorded",[bookingPage::class,"store"]);
 // Route::get('/profile', [profilePage::class, 'showProfile']);
 Route::get('/profile', [profilePage::class, 'showBooking'])->middleware('auth');
+// Route::post('/uploadfile', [profilePage::class, 'storeFile'])->middleware('auth');
+Route::get('/upload/{id}',[profilePage::class,'edit']);
+Route::put('/update/{id}',[profilePage::class,'uploadFile']);
 
 //admin
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);

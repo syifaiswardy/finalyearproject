@@ -5,7 +5,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="/" class="logo">
-                            <img src="assets/images/vidivox-logo.png" align="klassy cafe html template">
+                            <img src="{{url('assets/images/vidivox-logo.png')}}" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->

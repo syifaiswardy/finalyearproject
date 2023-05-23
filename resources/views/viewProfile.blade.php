@@ -51,7 +51,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                      <form class="forms-sample" action = "/" method="post">
+                      <form class="forms-sample" action = "/uploadfile" method="post">
                         @csrf
                         <div class="modal-body">
                             <div class="row-sm">
@@ -73,25 +73,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
      </div>
 
-     <div class="modal fade" id="QrCode" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="checkAvailableLabel">Maybank QR Code</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row-sm">
-                          <label><em>xxxxxxx-xxxx-xxxxxx Maybank</em></label>
-                          <img class ="rounded ms-auto d-block" src="assets/images/maybank-qr.jpeg" alt ="Maybank QR Code"></img>
-                        </div>
-                    </div>
-                    
-                  </div>
-                </div>
-     </div>
+     
 
                 <!-- ***** Modal Check Availability Ends *****  -->
     <!-- ***** Calendar Area Starts ***** -->
@@ -169,7 +151,7 @@ https://templatemo.com/tm-558-klassy-cafe
                           @endif
                           <td> RM 0.00 </td>
                           <td>
-                            <a href="" data-toggle="modal" data-target="#uploadFile">
+                            <a href={{"upload/".$display['id']}} data-toggle="" data-target="">
                               <img src="assets/images/upload-file-icon.png"></img>
                             </a>
                           </td>
