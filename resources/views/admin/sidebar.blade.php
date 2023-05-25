@@ -7,12 +7,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/customer')}}" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Customer</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-book menu-icon"></i>
               <span class="menu-title">Bookings</span>
@@ -39,6 +33,12 @@
               <span class="menu-title">Room</span>
             </a>
             
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/user')}}" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Users</span>
+            </a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">

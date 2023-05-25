@@ -9,6 +9,7 @@ use App\Models\booking_package;
 use App\Models\room;
 use App\Models\equipment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -34,7 +35,7 @@ class bookingPage extends Controller
         //$type = booking_type::all();
         //$package = booking_package::all();
         $value = room::all();
-        $equip = equipment::all();
+        $equip = DB::table('equipments')->get();
 
         return view("bookForm",compact('value','equip'));
         //return view ("bookForm",['list'=> $value]);

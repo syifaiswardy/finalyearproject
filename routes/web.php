@@ -43,10 +43,17 @@ Route::put('/update/{id}',[profilePage::class,'uploadFile']);
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);
 Route::get("/room",[roomControl::class,"showRoom"]);
 Route::get("/equipment",[equipControl::class,"showEquip"]);
-Route::get("/customer",[customerControl::class,"showCust"]);
+Route::get("/user",[customerControl::class,"showCust"]);
+Route::get("/editUser/{id}",[customerControl::class,"editUser"]);
+Route::post("/updateUser",[customerControl::class,"updateUser"]);
+
 Route::get("/custbook",[custBookingControl::class,"showBook"]);
 Route::get("/addCustBook",[custBookingControl::class,"showAddBook"]);
+Route::get("/editCustBook/{id}",[custBookingControl::class,"editCustBook"]);
+Route::post("/update",[custBookingControl::class,"updateCustBook"]);
+
 Route::post("/recordedAdmin",[custBookingControl::class,"store"]);
+
 Route::get("/calendar",[calendarControl::class,"showCalendar"]);
 
 

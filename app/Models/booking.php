@@ -24,4 +24,9 @@ class booking extends Model
         'total_payment',
 
     ];
+
+    // public function equipment()
+    // {
+    //     return $this->hasMany(Equipment::class);
+    // }
 }

@@ -61,13 +61,13 @@
                       <tbody>
                       @foreach($equip as $display)
                         <tr>
-                          <td>{{$display['id']}}</td>
-                          <td>{{$display['equip_name']}}</td>
+                          <td>{{$display->id}}</td>
+                          <td>{{$display->equip_name}}</td>
                           <td>
-                          @if ($display['rent_price'] == NULL)
+                          @if ($display->rent_price == NULL)
                           <label>RM 0.00 (FREE)</label>
                           @else
-                          {{$display['rent_price']}}
+                          {{$display->rent_price}}
                           </td>
                           @endif
                           <td></td>

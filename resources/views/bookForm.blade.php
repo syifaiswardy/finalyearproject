@@ -210,9 +210,9 @@ https://templatemo.com/tm-558-klassy-cafe
                       <label>Rent Equipment</label>
                       @foreach($equip as $display)
                         <div class="form-check">
-                          <input class="form-check-input" name="equip[]" type="checkbox" value="{{$display['equip_name']}}" id="flexCheckDefault">
+                          <input class="form-check-input" name="equip[]" type="checkbox" value="{{$display->equip_name}}" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
-                          {{$display['equip_name']}}
+                          {{$display->equip_name}}
                           </label>
                         </div>
                       @endforeach

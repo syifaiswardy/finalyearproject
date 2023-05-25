@@ -74,4 +74,48 @@ class custBookingControl extends Controller
         $p->session()->flash('success', "Booking has been recorded successfully. Click Back to view customer's booking details");
         return redirect('/addCustBook');
     }
+
+    public function editCustBook($id)
+    {
+        $username = DB::table('bookings')
+        ->join('users', 'bookings.user_id', '=', 'users.id')
+        ->select('bookings.*', 'users.name as user_name')
+        ->first();
+        $room = room::all();
+        $equip = DB::table('equipments')->get();
+        $bookings = Booking::find($id);
+        
+        // $selectedEquip = $bookings->equipment()->pluck('equip_name')->toArray();
+        return view("adminEditCustBook", compact('bookings','equip', 'room', 'username'));
+    }
+
+    public function updateCustBook(Request $p)
+    {
+        $update = Booking::find($p->booking_id);
+        
+        // Retrieve the user_id based on the selected user_name
+        $user = User::where('name', $p->name)->first();
+        $update->user_id = $user->id;
+
+        $update->booking_notes = $p->notes;
+        $update->start_datetime = $p->startDateTime;
+        $update->end_datetime = $p->endDateTime;
+        $update->booked_room = $p->bookingRoom;
+        $update->booked_type = $p->BookingType;
+
+        if ($p->BookingType == 'Recording') {
+            // Set the booking_package value based on the selected package
+            $update->booking_package = $p->package;
+        } else {
+            // Reset the booking_package value to "-"
+            $update->booking_package = NULL;
+        }
+
+        $update->booking_package = $p->package;
+        $update->rentEquip = implode(',', $p->input('equip', []));
+
+        $update->save();
+        return redirect("/custbook");
+    }
+
 }
