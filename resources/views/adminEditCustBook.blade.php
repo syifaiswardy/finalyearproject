@@ -90,7 +90,7 @@
                         <label class="form-check-label">Choose Packages</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="package" value="Full Package" @if($bookings->booking_package == 'Full Package') checked @endif>
+                                <input type="radio" class="form-check-input" name="package" value="Full Package" @if($bookings->booking_package == 'Full Package') checked @endif >
                                 Full Package
                             </label>
                         </div>

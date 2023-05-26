@@ -42,7 +42,17 @@ Route::put('/update/{id}',[profilePage::class,'uploadFile']);
 //admin
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);
 Route::get("/room",[roomControl::class,"showRoom"]);
+Route::get("/addRoom",[roomControl::class,"showAddRoom"]);
+Route::post("/recordedRoom",[roomControl::class,"storeAddRoom"]);
+Route::get("/editRoom/{id}",[roomControl::class,"editRoom"]);
+Route::post("/updateRoom",[roomControl::class,"updateRoom"]);
+
 Route::get("/equipment",[equipControl::class,"showEquip"]);
+Route::get("/addEquipment",[equipControl::class,"showAddEquip"]);
+Route::post("/recordedEquip",[equipControl::class,"storeAddEquip"]);
+Route::get("/editEquip/{id}",[equipControl::class,"editEquip"]);
+Route::post("/updateEquip",[equipControl::class,"updateEquip"]);
+
 Route::get("/user",[customerControl::class,"showCust"]);
 Route::get("/editUser/{id}",[customerControl::class,"editUser"]);
 Route::post("/updateUser",[customerControl::class,"updateUser"]);
@@ -51,6 +61,11 @@ Route::get("/custbook",[custBookingControl::class,"showBook"]);
 Route::get("/addCustBook",[custBookingControl::class,"showAddBook"]);
 Route::get("/editCustBook/{id}",[custBookingControl::class,"editCustBook"]);
 Route::post("/update",[custBookingControl::class,"updateCustBook"]);
+Route::get("/editBookType/{id}",[custBookingControl::class,"editBookType"]);
+Route::post("/updateBookType",[custBookingControl::class,"updateBookType"]);
+Route::get("/addBookTypes",[custBookingControl::class,"showAddBookTypes"]);
+Route::post("/recordedBookTypes",[custBookingControl::class,"storeAddBookTypes"]);
+
 
 Route::post("/recordedAdmin",[custBookingControl::class,"store"]);
 

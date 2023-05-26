@@ -7,6 +7,7 @@ use App\Models\booking;
 use App\Models\room;
 use App\Models\user;
 use App\Models\equipment;
+use App\Models\booking_type;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -116,6 +117,62 @@ class custBookingControl extends Controller
 
         $update->save();
         return redirect("/custbook");
+    }
+
+    public function editBookType($id)
+    {
+        $booktype = Booking_type::find($id);
+
+        return view("adminEditBookingTypes", compact('booktype'));
+    }
+
+    public function updateBookType(Request $request)
+    {
+        $update = Booking_type::find($request->booktype_id);
+
+        $update->booking_name = $request->booktype_name;
+        $update->booking_desc = $request->booktype_desc;
+        // $update->recording_packages = $request->packages;
+        // $update->recording_packagesDesc = $request->packages_desc;
+        $update->booking_price = $request->price;
+
+        if ($request->packages == 'NONE') {
+            $update->recording_packages = NULL;
+        } else {
+            $update->recording_packages = $request->packages;
+        }
+
+        if ($request->packages_desc == 'NONE') {
+            $update->recording_packagesDesc = NULL;
+        } else {
+            $update->recording_packagesDesc = $request->packages_desc;
+        }
+
+        $update->save();
+        return redirect("/bookingtype");
+    }
+
+    public function showAddBookTypes()
+    {
+        $booktypes = Booking_type::all();
+
+        return view("adminAddBookingTypes",compact('booktypes'));
+    }
+
+    public function storeAddBookTypes(Request $p){
+        
+        $store = new booking_type;
+        $store->booking_name = $p->booktype_name;
+        $store->booking_desc = $p->booktype_desc;
+        $store->recording_packages = $p->packages;
+        $store->recording_packagesDesc = $p->packages_desc;
+        $store->booking_price = $p->price;
+
+        $store->save();
+    
+        // flash success message to session
+        // $p->session()->flash('success', "Booking has been recorded successfully. Click Back to view customer's booking details");
+        return redirect('/bookingtype');
     }
 
 }
