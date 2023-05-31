@@ -80,8 +80,9 @@ class custBookingControl extends Controller
     {
         $username = DB::table('bookings')
         ->join('users', 'bookings.user_id', '=', 'users.id')
-        ->select('bookings.*', 'users.name as user_name')
+        ->select('bookings.*', DB::raw("CONCAT(users.name) AS user_name"))
         ->first();
+
         $room = room::all();
         $equip = DB::table('equipments')->get();
         $bookings = Booking::find($id);
@@ -92,6 +93,7 @@ class custBookingControl extends Controller
 
     public function updateCustBook(Request $p)
     {
+        try{
         $update = Booking::find($p->booking_id);
         
         // Retrieve the user_id based on the selected user_name
@@ -114,65 +116,43 @@ class custBookingControl extends Controller
 
         $update->booking_package = $p->package;
         $update->rentEquip = implode(',', $p->input('equip', []));
+        $update->booking_fee = str_replace('RM', '', $p->bookingfee);
+        $update->total_payment = str_replace('RM', '', $p->totalfee);
 
         $update->save();
-        return redirect("/custbook");
-    }
-
-    public function editBookType($id)
-    {
-        $booktype = Booking_type::find($id);
-
-        return view("adminEditBookingTypes", compact('booktype'));
-    }
-
-    public function updateBookType(Request $request)
-    {
-        $update = Booking_type::find($request->booktype_id);
-
-        $update->booking_name = $request->booktype_name;
-        $update->booking_desc = $request->booktype_desc;
-        // $update->recording_packages = $request->packages;
-        // $update->recording_packagesDesc = $request->packages_desc;
-        $update->booking_price = $request->price;
-
-        if ($request->packages == 'NONE') {
-            $update->recording_packages = NULL;
-        } else {
-            $update->recording_packages = $request->packages;
-        }
-
-        if ($request->packages_desc == 'NONE') {
-            $update->recording_packagesDesc = NULL;
-        } else {
-            $update->recording_packagesDesc = $request->packages_desc;
-        }
-
-        $update->save();
-        return redirect("/bookingtype");
-    }
-
-    public function showAddBookTypes()
-    {
-        $booktypes = Booking_type::all();
-
-        return view("adminAddBookingTypes",compact('booktypes'));
-    }
-
-    public function storeAddBookTypes(Request $p){
         
-        $store = new booking_type;
-        $store->booking_name = $p->booktype_name;
-        $store->booking_desc = $p->booktype_desc;
-        $store->recording_packages = $p->packages;
-        $store->recording_packagesDesc = $p->packages_desc;
-        $store->booking_price = $p->price;
+        return redirect("/custbook")->with('success', 'Customer booking updated successfully.');
+        }
+        catch (\Exception $e){
+            return redirect("/custbook")->with('fail', 'Failed to update Customer booking.');
+        }
 
-        $store->save();
-    
-        // flash success message to session
-        // $p->session()->flash('success', "Booking has been recorded successfully. Click Back to view customer's booking details");
-        return redirect('/bookingtype');
     }
+
+    public function deleteCustBook($id)
+    {
+        $username = DB::table('bookings')
+        ->join('users', 'bookings.user_id', '=', 'users.id')
+        ->select('bookings.*', 'users.name as user_name')
+        ->first();
+        $room = room::all();
+        $equip = DB::table('equipments')->get();
+        $bookings = Booking::find($id);
+
+        return view("adminDeleteCustBooking", compact('bookings','equip', 'room', 'username'));
+    }
+
+    public function destroyCustBook($id)
+    {
+        try {
+            DB::delete('delete from bookings where id = ?', [$id]);
+
+            return redirect('/custbook')->with('success', 'Customer booking deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect('/custbook')->with('error', 'Failed to delete Customer booking.');
+        }
+    }
+
+    
 
 }

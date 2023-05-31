@@ -110,6 +110,12 @@ https://templatemo.com/tm-558-klassy-cafe
                                         </div>
                                     </div>
                             </div>
+                            @if(session('filePath'))
+                                <div>
+                                    <h3>Uploaded File:</h3>
+                                    <a href="{{ session('$bookings->file_path') }}" target="_blank">Download File</a>
+                                </div>
+                            @endif
                             <br>
                             <h4 class="card-title">Booking details</h4>
                             <div class="form-group">
@@ -121,12 +127,15 @@ https://templatemo.com/tm-558-klassy-cafe
                             <input type="datetime-local" class="form-control" name= "endDateTime" id="endDateTime" value="{{$bookings->end_datetime}}" readonly>
                             </div>
                             <div class="form-group">
-                            <label>Choose Booking Type </label>
+                            <label>Booking Type </label>
                             <input type="text" class="form-control" name= "booktype" value="{{$bookings->booked_type}}" readonly>
                             </div>
-                            
                             <div class="form-group">
-                            <label>Choose Room </label>
+                            <label>Booking Package </label>
+                            <input type="text" class="form-control" name= "bookpackage" value="{{$bookings->booking_package}}" readonly>
+                            </div>                           
+                            <div class="form-group">
+                            <label>Room </label>
                             <input type="text" class="form-control" name= "bookroom" value="{{$bookings->booked_room}}" readonly>
                             </div>
                             <div class="form-group">
@@ -136,7 +145,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <div class="form-group">
                             <div class="form-group">
                             <label>Total Fee</label>
-                            <input type="text" class="form-control" id="totalFeeDisplay" placeholder="RM0.00" readonly>
+                            <input type="text" class="form-control" value="RM {{$bookings->total_payment}}" placeholder="RM0.00" readonly>
                             </div>
                             
                             <!-- <div class="form-check form-check-flat form-check-primary">

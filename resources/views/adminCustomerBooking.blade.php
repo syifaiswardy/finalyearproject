@@ -25,6 +25,15 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+        @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @elseif (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
           <div class="row">
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -45,6 +54,7 @@
                       <thead>
                         <tr>
                           <th>Booking ID</th>
+                          <th>Customer ID</th>
                           <th>Full Name</th>
                           <th>Start DateTime</th>
                           <th>End DateTime</th>
@@ -52,10 +62,9 @@
                           <th>Studio Name</th>
                           <th>Booking Type</th>
                           <th>Booking Package</th>
-                          <th>Booking Price</th>
                           <th>Equipment Rented</th>
-                          <th>Equipment Rented Price</th>
                           <th>Uploaded File</th>
+                          <th>Booking Fee</th>
                           <th>Total Payment</th>
                           <th></th>
                           <th></th>
@@ -65,6 +74,7 @@
                       @foreach($book as $display)
                         <tr>
                         <td>{{$display->id}}</td>
+                        <td>{{$display->user_id}}</td>
                         <td>{{$display->user_name}}</td>
                         <td>{{$display->start_datetime}}</td>
                         <td>{{$display->end_datetime}}</td>
@@ -95,16 +105,14 @@
                             <td style="color:#E7C15E;font-weight:bold;">{{$display->booking_package}}</td>
                         @endif
                         
-                        <td>RM {{$display->booking_total}}</td>
-
                         @if(empty($display->rentEquip))
                           <td><em>No Equipment needed</em></td>
                           @else
                           <td>{{$display->rentEquip}}</td>    
                           @endif
                           
-                        <td>{{$display->rentEquip_price}}</td>
                         <td>{{$display->file_path}}</td>
+                        <td>RM {{$display->booking_fee}}</td>
                         <td>RM {{$display->total_payment}}</td>
                         <td></td>
                         <td></td>
@@ -114,7 +122,7 @@
                             </a>
                           </td>
                           <td>
-                            <a href="">
+                            <a href={{"deleteCustBook/".$display->id}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12Z"/></svg>
                             </a>
                           </td>

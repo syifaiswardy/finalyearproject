@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\room;
+use Illuminate\Support\Facades\DB;
 
 class roomControl extends Controller
 {
@@ -45,5 +46,24 @@ class roomControl extends Controller
         $room->save();
         return redirect("/room");
     }
+
+    public function deleteRoom($id)
+    {
+        $room = room::find($id);
+
+        return view("adminDeleteRooms", compact('room'));
+    }
+
+    public function destroyRoom($id)
+    {
+        try {
+            DB::delete('delete from rooms where id = ?', [$id]);
+
+            return redirect('/room')->with('success', 'Booking type deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect('/room')->with('error', 'Failed to delete booking type.');
+        }
+    }
+
 
 }

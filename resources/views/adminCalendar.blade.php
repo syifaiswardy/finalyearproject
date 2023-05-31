@@ -41,6 +41,7 @@
                 <div class="card-body">
                   <div class = "float-left">
                     <h4 class="card-title">Calendar</h4>
+                    <div id="calendar"></div> 
                   </div>
                   
                 </div>
@@ -48,9 +49,7 @@
             </div>
           </div>
 
-            <div class="col-md-12 grid-margin stretch-card">
-                <div id="calendar"></div> 
-            </div>
+            
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -66,27 +65,39 @@
   <!-- container-scroller -->
   <script>
         $(document).ready(function() {
-            var test = @json($events);
-            console.log(test)
+            var bookings = @json($events);
+            console.log(bookings);
             $('#calendar').fullCalendar({
-                header:{
-                    'left':'prev, next today',
-                    'center' : 'title',
+                header: {
+                    'left': 'prev, next today',
+                    'center': 'title',
                     'right': 'month, agendaWeek, agendaDay'
                 },
-                // events : test,
-                // selectable: true,
-                // selectHelper: true,
-                // select: function (start, end, allDays){
-                //     // $('#startDate').val(start.format('DD-MM-YYYY'));
-                //     // $('#endDate').val(end.format('DD-MM-YYYY'));
-                //     $('#bookingModal').modal('toggle');
-                // },       
-                
-            })
+                events: bookings
+            });
         });
-      </script>
-  @include("admin.js")
+    </script>
+  
+    <!-- plugins:js -->
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{{url('admin template/vendors/chart.js/Chart.min.js')}}"></script>
+  <script src="{{url('admin template/vendors/datatables.net/jquery.dataTables.js')}}"></script>
+  <script src="{{url('admin template/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
+  <script src="{{url('admin template/js/dataTables.select.min.js')}}"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{{url('admin template/js/off-canvas.js')}}"></script>
+  <script src="{{url('admin template/js/hoverable-collapse.js')}}"></script>
+  <script src="{{url('admin template/js/template.js')}}"></script>
+  <script src="{{url('admin template/js/settings.js')}}"></script>
+  <script src="{{url('admin template/js/todolist.js')}}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{{url('admin template/js/dashboard.js')}}"></script>
+  <script src="{{url('admin template/js/Chart.roundedBarCharts.js')}}"></script>
+  <script src="{{url('admin template/js/chart.js')}}"></script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@
                                 
                                 @if (Route::has('login'))
                                     <li>
-                                        <a href="{{url('/booking')}}">Studio Calendar</a>
+                                        <a href="{{url('/calendarForm')}}">Studio Calendar</a>
                                     </li>   
                                     <li>
                                         <a href="{{url('/bookform')}}">Booking Form</a>

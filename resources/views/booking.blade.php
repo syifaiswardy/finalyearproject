@@ -24,7 +24,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <!--fullcalendar cdn-->
     
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
@@ -114,26 +114,19 @@ https://templatemo.com/tm-558-klassy-cafe
     error cannot display data from database to calendar-->
     <script>
         $(document).ready(function() {
-            var test = @json($events);
-            console.log(test)
+            var bookings = @json($events);
+            console.log(bookings);
             $('#calendar').fullCalendar({
-                header:{
-                    'left':'prev, next today',
-                    'center' : 'title',
+                header: {
+                    'left': 'prev, next today',
+                    'center': 'title',
                     'right': 'month, agendaWeek, agendaDay'
                 },
-                // events : test,
-                // selectable: true,
-                // selectHelper: true,
-                // select: function (start, end, allDays){
-                //     // $('#startDate').val(start.format('DD-MM-YYYY'));
-                //     // $('#endDate').val(end.format('DD-MM-YYYY'));
-                //     $('#bookingModal').modal('toggle');
-                // },       
-                
-            })
+                events: bookings
+            });
         });
-      </script>
+    </script>
+
 
     @include("customer.js")
   </body>

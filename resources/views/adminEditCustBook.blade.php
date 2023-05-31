@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group">
                       <label>Customer Name</label>
-                      <input type="text" class="form-control" name= "name" id="name" value="{{$username->user_name}}" placeholder="Name" readonly>
+                      <input type="text" class="form-control" name= "name"  value="{{$username->user_name}}" placeholder="Name" readonly>
                     </div>
                     <div class="form-group">
                       <label>Start Date and Time</label>
@@ -128,7 +128,7 @@
                       @endphp
                       @foreach($equip as $display)
                       <div class="form-check">
-                          <input class="form-check-input" name="equip[]" type="checkbox" value="{{$display->equip_name}}" id="flexCheckDefault" @if(in_array($display->equip_name, $selectedEquip)) checked @endif>
+                          <input class="form-check-input" name="equip[]" type="checkbox" value="{{$display->equip_name}}" data-rent-price="{{$display->rent_price}}" id="flexCheckDefault" @if(in_array($display->equip_name, $selectedEquip)) checked @endif>
                           <label class="form-check-label" for="flexCheckDefault">
                               {{$display->equip_name}}
                           </label>
@@ -152,6 +152,17 @@
                                         <button class="browse btn btn-warning px-4" type="button" x-on:click.prevent="$refs.file.click()">Browse</button>
                                         </div>
                                     </div>
+
+                                    <br>
+                    <button type="button" class="btn btn-dark" onclick="calculateTotalFee()">Calculate Total Fee</button>
+                    <div class="form-group">
+                            <label>Booking Fee</label>
+                            <input type="text" class="form-control" id="bookingFeeDisplay" name = "bookingfee" value="" placeholder="RM0.00" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label>Total Fee (with Equipment)</label>
+                            <input type="text" class="form-control" id="totalFeeDisplay" name = "totalfee" placeholder="RM0.00" readonly>
+                    </div>
                     <button type="submit" class="btn btn-primary mr-2" style="background-color:#F0CF65;color:black;">Submit</button>
                     <!-- <button type="reset" class="btn btn-light">Reset</button> -->
                   </form>
@@ -182,11 +193,75 @@
           
         }
     </style>
-    <!-- <script>
-    @if($errors->any())
-        alert('{{ $errors->first() }}');
-    @endif
-    </script> -->
+   <script>
+      function calculateTotalFee() {
+        var startDateTimeInput = document.getElementById("startDateTime");
+        var endDateTimeInput = document.getElementById("endDateTime");
+
+        var startDateTime = new Date(startDateTimeInput.value);
+        var endDateTime = new Date(endDateTimeInput.value);
+
+        var hours = Math.abs(endDateTime - startDateTime) / 36e5;
+
+        var bookingType = document.getElementById("selectId").value;
+        var package = document.querySelector('input[name="package"]:checked');
+        var equipment = document.querySelectorAll('input[name="equip[]"]:checked');
+
+
+        var rate = 0;
+
+        // Calculate the rate based on the booking type
+        if (bookingType == "Jamming") {
+          rate = 35;
+        } else if (bookingType == "Recording") {
+          rate = 0;
+
+          // Calculate the rate based on the package
+          if (package) {
+            package = package.value;
+            if (package == "Full Package") {
+              rate += 5000 / hours;
+            } else if (package == "Half Package") {
+              rate += 3500 / hours;
+            } else if (package == "Vocal or Voice Recorder Only") {
+              rate += 50;
+            }
+          }
+        } else if (bookingType == "Music Class") {
+          rate = 100;
+        }
+
+        
+
+        var bookingFee = rate * hours;
+        console.log("Total Fee: RM", bookingFee);
+        var bookingFeeDisplay = document.getElementById("bookingFeeDisplay");
+        bookingFeeDisplay.setAttribute('value', 'RM' + bookingFee.toFixed(2));
+
+        var totalFee = bookingFee; // Assign the bookingFee value to totalFee
+
+        // Calculate the rate based on the selected equipment
+        if (equipment.length > 0) {
+          equipment.forEach(function(item) {
+            var equipmentPrice = item.dataset.rentPrice;
+            if (equipmentPrice) {
+              equipmentPrice = parseFloat(equipmentPrice);
+            } else {
+              equipmentPrice = 0;
+            }
+            totalFee += equipmentPrice; // Add the equipmentPrice to totalFee
+          });
+        }
+
+        console.log("Total Fee: RM", totalFee);
+        var totalFeeDisplay = document.getElementById("totalFeeDisplay");
+        totalFeeDisplay.setAttribute('value', 'RM' + totalFee.toFixed(2));
+        
+
+
+
+      }
+    </script>
 
     <script>
       function checkAvailability() {

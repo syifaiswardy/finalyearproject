@@ -74,11 +74,11 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Backline Instrument End ***** -->
     <!-- ***** Modal Check Availability Starts *****  -->
     
-    <div class="modal fade" id="checkAvailable" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
+    <div class="modal fade" id="checkTotalFee" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="checkAvailableLabel">Booking Availability</h5>
+                      <h5 class="modal-title" id="checkAvailableLabel">Total Fee</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -86,40 +86,16 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="modal-body">
                       <div class="row">
                         <div class="col-sm">
-                          <label id="startDateLabel"></label>
+                          <div class="form-group">
+                            <label>Total Fee</label>
+                            <input type="text" class="form-control" id="totalFee" placeholder="RM0.00" readonly>
+                          </div>
                         </div>
-                        <div class="col-sm">
                         
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col-sm">
-                          <label id="endDateLabel"></label>
-                        </div>
-                        <div class="col-sm">
-                          
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col-sm">
-                          <label id="studioLabel"></label>
-                        </div>
-                        <div class="col-sm">
-                        <label id="availabilityLabel"></label>
-                        </div>
-                      </div>
-                      <div>
-                        <h5 class="modal-title" id="checkAvailableLabel">Other Booking Details</h5>
-                        <br>
-                          <label  style="font-weight:bold;">Booking Type</label><br>
-                          <label id="bookingType"></label><br><br>
-                          <label style="font-weight:bold;">Booking Packages</label><br>
-                          <label id="package"></label><br><br>
-                          <label style="font-weight:bold;">Total Fee</label><br>
-                          <label id="totalFeeDisplay"></label><br><br>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" style="background-color:#F0CF65;color:black;">Book</button>
                     </div>
                   </div>
                 </div>
@@ -142,7 +118,10 @@ https://templatemo.com/tm-558-klassy-cafe
                         </div>
                     @endif
 
+                    
+        
         <div>
+
                 <h1 style="text-align:center;">Book Form
                 </h1> 
         </div>
@@ -163,9 +142,9 @@ https://templatemo.com/tm-558-klassy-cafe
                       <label>Choose Booking Type </label>
                         <select class="form-control" name = "BookingType" id="selectId" onchange="togglePackagesSection();" required>
                           <option value="">Select option</option>
-                          <option value="Jamming" id="selectId">Jamming</option>
-                          <option value="Recording" id="selectId">Recording</option>
-                          <option value="Music Class" id="selectId">Music Class</option>
+                          <option value="Jamming" >Jamming</option>
+                          <option value="Recording">Recording</option>
+                          <option value="Music Class">Music Class</option>
                         </select>
 
                     </div>
@@ -207,20 +186,27 @@ https://templatemo.com/tm-558-klassy-cafe
                       <textarea class="form-control" name="notes" placeholder="Write your notes here"></textarea>
                     </div>
                     <div class="form-group">
-                      <label>Rent Equipment</label>
+                      <label>Rent Equipment (per hour)</label>
                       @foreach($equip as $display)
                         <div class="form-check">
-                          <input class="form-check-input" name="equip[]" type="checkbox" value="{{$display->equip_name}}" id="flexCheckDefault">
+                        <input class="form-check-input" name="equip[]" type="checkbox" value="{{$display->equip_name}}" data-rent-price="{{$display->rent_price}}" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
-                          {{$display->equip_name}}
+                            {{$display->equip_name}} - RM{{ $display->rent_price ? $display->rent_price : '0.00 (FREE)' }}
                           </label>
                         </div>
                       @endforeach
                     </div>
-                    <!-- <div class="form-group">
-                      <label>Total Fee</label>
-                      <input type="text" class="form-control" id="totalFeeDisplay" placeholder="RM0.00" readonly>
-                    </div> -->
+
+                    <br>
+                    <button type="button" class="btn btn-dark" onclick="calculateTotalFee()">Calculate Total Fee</button>
+                    <div class="form-group">
+                            <label>Booking Fee</label>
+                            <input type="text" class="form-control" id="bookingFeeDisplay" name = "bookingfee" value="" placeholder="RM0.00" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label>Total Fee (with Equipment)</label>
+                            <input type="text" class="form-control" id="totalFeeDisplay" name = "totalfee" placeholder="RM0.00" readonly>
+                    </div>
                     <!-- <div class="form-check form-check-flat form-check-primary">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input">
@@ -228,13 +214,22 @@ https://templatemo.com/tm-558-klassy-cafe
                       </label>
                     </div> -->
                     <button type="submit" class="btn btn-primary mr-2" style="background-color:#F0CF65;color:black;">Submit</button>
-                    <button type="button" class="btn btn-light" style="background-color:#F0CF65;color:black;" data-toggle="modal" data-target="#checkAvailable" onclick="checkAvailability()">Check Availability</button>
+                    <!-- <button type="button" class="btn btn-light" style="background-color:#F0CF65;color:black;" data-toggle="modal" data-target="#checkAvailable" onclick="checkAvailability()">Check Availability</button> -->
                     <button type="reset" class="btn btn-light">Reset</button>
                   </form>
                   
                 </div>
               </div>
               <div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title" style="text-align:center;">List of Equipments provided</h4>
+              <div class = "row">
+                      <img src="assets/images/equipment.png" alt="equipment" style="width: 700px; height: auto; display: block; margin: 0 auto;">
+               </div>
+          </div>
         </div>
         
     </section>
@@ -261,6 +256,76 @@ https://templatemo.com/tm-558-klassy-cafe
     @endif
     </script> -->
 
+    <script>
+      function calculateTotalFee() {
+        var startDateTimeInput = document.getElementById("startDateTime");
+        var endDateTimeInput = document.getElementById("endDateTime");
+
+        var startDateTime = new Date(startDateTimeInput.value);
+        var endDateTime = new Date(endDateTimeInput.value);
+
+        var hours = Math.abs(endDateTime - startDateTime) / 36e5;
+
+        var bookingType = document.getElementById("selectId").value;
+        var package = document.querySelector('input[name="package"]:checked');
+        var equipment = document.querySelectorAll('input[name="equip[]"]:checked');
+
+
+        var rate = 0;
+
+        // Calculate the rate based on the booking type
+        if (bookingType == "Jamming") {
+          rate = 35;
+        } else if (bookingType == "Recording") {
+          rate = 0;
+
+          // Calculate the rate based on the package
+          if (package) {
+            package = package.value;
+            if (package == "Full Package") {
+              rate += 5000 / hours;
+            } else if (package == "Half Package") {
+              rate += 3500 / hours;
+            } else if (package == "Vocal or Voice Recorder Only") {
+              rate += 50;
+            }
+          }
+        } else if (bookingType == "Music Class") {
+          rate = 100;
+        }
+
+        
+
+        var bookingFee = rate * hours;
+        console.log("Total Fee: RM", bookingFee);
+        var bookingFeeDisplay = document.getElementById("bookingFeeDisplay");
+        bookingFeeDisplay.setAttribute('value', 'RM' + bookingFee.toFixed(2));
+
+        var totalFee = bookingFee; // Assign the bookingFee value to totalFee
+
+        // Calculate the rate based on the selected equipment
+        if (equipment.length > 0) {
+          equipment.forEach(function(item) {
+            var equipmentPrice = item.dataset.rentPrice;
+            if (equipmentPrice) {
+              equipmentPrice = parseFloat(equipmentPrice);
+            } else {
+              equipmentPrice = 0;
+            }
+            totalFee += equipmentPrice; // Add the equipmentPrice to totalFee
+          });
+        }
+
+        console.log("Total Fee: RM", totalFee);
+        var totalFeeDisplay = document.getElementById("totalFeeDisplay");
+        totalFeeDisplay.setAttribute('value', 'RM' + totalFee.toFixed(2));
+        
+
+
+
+      }
+    </script>
+        
     <script>
       function checkAvailability() {
         // Retrieve the values of the start date, end date, and studio inputs
@@ -335,38 +400,38 @@ https://templatemo.com/tm-558-klassy-cafe
           document.getElementById("bookingType").innerHTML = bookingType;
           document.getElementById("package").innerHTML = package;
 
-          // Import the moment.js library
-          // (Make sure you include the script tag for moment.js in your HTML file)
-          const moment = window.moment;
-          const totalFeeDisplay = document.getElementById("totalFeeDisplay");
-          // Calculate the total fee
-          var duration = moment.duration(endDateTime.diff(startDateTime));
-          var hours = duration.asHours();
-          var rate = 0;
+          // // Import the moment.js library
+          // // (Make sure you include the script tag for moment.js in your HTML file)
+          // const moment = window.moment;
+          // const totalFeeDisplay = document.getElementById("totalFeeDisplay");
+          // // Calculate the total fee
+          // var duration = moment.duration(endDateTime.diff(startDateTime));
+          // var hours = duration.asHours();
+          // var rate = 0;
 
-          if (bookingType === "Jamming") {
-            rate = 35;
-          } else if (bookingType === "Recording") {
-            rate = 0;
-          } else if (bookingType === "Music Class") {
-            rate = 100;
-          }
+          // if (bookingType === "Jamming") {
+          //   rate = 35;
+          // } else if (bookingType === "Recording") {
+          //   rate = 0;
+          // } else if (bookingType === "Music Class") {
+          //   rate = 100;
+          // }
 
-          if (package === "Full Package") {
-            rate += 5000/hours;
-          } else if (package === "Half Package") {
-            rate += 3500/hours;
-          } else if (package === "Vocal or Voice Recorder Only") {
-            rate += 50;
-          }
+          // if (package === "Full Package") {
+          //   rate += 5000/hours;
+          // } else if (package === "Half Package") {
+          //   rate += 3500/hours;
+          // } else if (package === "Vocal or Voice Recorder Only") {
+          //   rate += 50;
+          // }
 
-          var total = rate * hours;
+          // var total = rate * hours;
 
-          // Set the value of the total fee label in the modal
-          document.getElementById("totalfee").innerHTML = "RM" + total.toFixed(2);
-          document.getElementById("totalFeeDisplay").textContent = "RM" + total.toFixed(2);
-          // CalculateTotalFee(startDateTime, endDateTime, bookingType, package) 
-          // console.log(total = rate * hours);
+          // // Set the value of the total fee label in the modal
+          // document.getElementById("totalfee").innerHTML = "RM" + total.toFixed(2);
+          // document.getElementById("totalFeeDisplay").textContent = "RM" + total.toFixed(2);
+          // // CalculateTotalFee(startDateTime, endDateTime, bookingType, package) 
+          // // console.log(total = rate * hours);
           
       }
     
@@ -390,7 +455,9 @@ https://templatemo.com/tm-558-klassy-cafe
         
        
 
-         
+        // Call calculateTotalFee() when startDateTime or endDateTime inputs change
+        document.getElementById("startDateTime").addEventListener("input", calculateTotalFee);
+        document.getElementById("endDateTime").addEventListener("input", calculateTotalFee);
     </script>
     <script src="assets/js/jquery-2.1.0.min.js"></script>
 

@@ -29,7 +29,9 @@ use App\Http\Controllers\calendarControl;
 //guest
 Route::get("/",[homepageControl::class,"index"]);
 //customer and guest
-Route::get("/booking",[bookingPage::class,"index2"]);
+Route::get("/calendarForm",[bookingPage::class,"index2"]);
+Route::post('fullcalenderAjax', [bookingPage::class, 'ajax']);
+
 // Route::get("/booking",[bookingPage::class,"show"]);
 Route::get("/bookform",[bookingPage::class,"show"])->middleware('auth');
 Route::post("/recorded",[bookingPage::class,"store"]);
@@ -41,17 +43,29 @@ Route::put('/update/{id}',[profilePage::class,'uploadFile']);
 
 //admin
 Route::get("/bookingtype",[bookingTypeControl::class,"show"]);
+Route::get("/editBookType/{id}",[bookingTypeControl::class,"editBookType"]);
+Route::post("/updateBookType",[bookingTypeControl::class,"updateBookType"]);
+Route::get("/addBookTypes",[bookingTypeControl::class,"showAddBookTypes"]);
+Route::post("/recordedBookTypes",[bookingTypeControl::class,"storeAddBookTypes"]);
+Route::get("/deleteBookType/{id}",[bookingTypeControl::class,"deleteBookTypes"]);
+Route::delete("/destroyBookType/{id}", [bookingTypeControl::class, "destroyBookTypes"])->name('destroyBookType');
+
 Route::get("/room",[roomControl::class,"showRoom"]);
 Route::get("/addRoom",[roomControl::class,"showAddRoom"]);
 Route::post("/recordedRoom",[roomControl::class,"storeAddRoom"]);
 Route::get("/editRoom/{id}",[roomControl::class,"editRoom"]);
 Route::post("/updateRoom",[roomControl::class,"updateRoom"]);
+Route::get("/deleteRoom/{id}",[roomControl::class,"deleteRoom"]);
+Route::delete("/destroyRoom/{id}", [roomControl::class, "destroyRoom"])->name('destroyRoom');
 
 Route::get("/equipment",[equipControl::class,"showEquip"]);
 Route::get("/addEquipment",[equipControl::class,"showAddEquip"]);
 Route::post("/recordedEquip",[equipControl::class,"storeAddEquip"]);
 Route::get("/editEquip/{id}",[equipControl::class,"editEquip"]);
 Route::post("/updateEquip",[equipControl::class,"updateEquip"]);
+Route::get("/deleteEquip/{id}",[equipControl::class,"deleteEquip"]);
+Route::delete("/destroyEquip/{id}", [equipControl::class, "destroyEquip"])->name('destroyEquip');
+
 
 Route::get("/user",[customerControl::class,"showCust"]);
 Route::get("/editUser/{id}",[customerControl::class,"editUser"]);
@@ -61,10 +75,10 @@ Route::get("/custbook",[custBookingControl::class,"showBook"]);
 Route::get("/addCustBook",[custBookingControl::class,"showAddBook"]);
 Route::get("/editCustBook/{id}",[custBookingControl::class,"editCustBook"]);
 Route::post("/update",[custBookingControl::class,"updateCustBook"]);
-Route::get("/editBookType/{id}",[custBookingControl::class,"editBookType"]);
-Route::post("/updateBookType",[custBookingControl::class,"updateBookType"]);
-Route::get("/addBookTypes",[custBookingControl::class,"showAddBookTypes"]);
-Route::post("/recordedBookTypes",[custBookingControl::class,"storeAddBookTypes"]);
+Route::get("/deleteCustBook/{id}",[custBookingControl::class,"deleteCustBook"]);
+Route::delete("/destroyCustBook/{id}", [custBookingControl::class, "destroyCustBook"])->name('destroyCustBook');
+
+
 
 
 Route::post("/recordedAdmin",[custBookingControl::class,"store"]);
@@ -73,6 +87,7 @@ Route::get("/calendar",[calendarControl::class,"showCalendar"]);
 
 
 Route::get("/redirect",[homepageControl::class,"redirectFunct"]);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

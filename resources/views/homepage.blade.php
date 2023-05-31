@@ -172,6 +172,133 @@ https://templatemo.com/tm-558-klassy-cafe
     </div>
     <!-- ***** Main Banner Area End ***** -->
     <!-- ***** Booking Area Starts ***** -->
+
+     <!-- ***** Jamming Modal Area Starts ***** -->
+    <div class="modal fade" id="Jamming" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="checkAvailableLabel">Jamming Services</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    <label  style="font-weight:bold; font-size:20px;">Jam here with your friends, family or bandmates!</label><br>
+                      <div class="row">
+                        <div class="col-sm">
+                            <img src="assets/images/jamming2.jpg" alt="jamming" style="width: 450px; height: auto;">
+                        </div>
+                      </div>
+                      <br>
+                      <div class = "row">
+                        <div class="col-sm">
+                            <img src="assets/images/jamming3.jpg" alt="jamming" style="width: 450px; height: auto;">
+                        </div>
+                      </div>
+                      <br>
+
+                      <label  style="font-weight:bold; font-size:20px;">Booking Price:</label><br>
+                      <label style="color:#;">RM 35/hour</label><br>
+                      <a href= "/bookform" type="button" class="btn btn-warning">Book Now!</a>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+     </div>
+          <!-- ***** Jamming Modal Area End ***** -->
+
+               <!-- ***** Recording Modal Area Starts ***** -->
+    <div class="modal fade" id="Recording" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="checkAvailableLabel">Recording Services</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    <label  style="font-weight:bold; font-size:20px;">Record your songs or voiceover here!</label><br>
+                      <div class="row">
+                        <div class="col-sm thumb">
+                            <img src="assets/images/recording2.jpg" alt="recording" style="width: 450px; height: auto;">
+                        </div>
+                      </div>
+                      <br>
+                      <div class = "row">
+                        <div class="col-sm thumb">
+                            <img src="assets/images/recording3.jpg" alt="recording" style="width: 450px; height: auto;">
+                        </div>
+                      </div>
+                      <br>
+
+                      <label  style="font-weight:bold; font-size:20px;">Booking Price:</label><br>
+
+                      <label  style="font-weight:bold; font-size:17px;">Full Package</label><br>
+                      <label  style="font-size:15px;">Lyrics, arrangements, mixing and mastering are provided</label><br>
+                      <label style="color:#;">RM 5000</label><br><br>
+
+                      <label  style="font-weight:bold; font-size:17px;">Half Package</label><br>
+                      <label  style="font-size:15px;">Only arrangements, mixing and mastering are provided</label><br>
+                      <label style="color:#;">RM 3500</label><br><br>
+
+                      <label  style="font-weight:bold; font-size:17px;">Vocal or Voiceover only</label><br>
+                      <label  style="font-size:15px;">Record vocal for singers or any voiceover</label><br>
+                      <label style="color:#;">RM 50/hour</label><br><br>
+
+                      <a href= "/bookform" type="button" class="btn btn-warning">Book Now!</a>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+     </div>
+          <!-- ***** Recording Modal Area End ***** -->
+
+          <!-- ***** Music Class Modal Area Starts ***** -->
+    <div class="modal fade" id="MusicClass" tabindex="-1" role="dialog" aria-labelledby="checkAvailableLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="checkAvailableLabel">Music Class Services</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    <label  style="font-weight:bold; font-size:20px;">Register here for music classes!</label><br>
+                      <div class="row">
+                        <div class="col-sm thumb">
+                            <img src="assets/images/music-class2.jpg" alt="music class" style="width: 450px; height: auto;">
+                        </div>
+                      </div>
+                      <br>
+                      <div class = "row">
+                        <div class="col-sm thumb">
+                            <img src="assets/images/music-class3.jpg" alt="music class" style="width: 450px; height: auto;">
+                        </div>
+                      </div>
+                      <br>
+
+                      <label  style="font-weight:bold; font-size:20px;">Booking Price:</label><br>
+                      <label style="color:#;">RM 50/hour</label><br>
+                      <a href= "/bookform" type="button" class="btn btn-warning">Book Now!</a>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+     </div>
+          <!-- ***** Music Class Modal Area End ***** -->
+
     <section class="section" id="chefs">
         <div class="container">
             <!-- <div class="row">
@@ -196,7 +323,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         </div>
                         <div class="down-content">
                             <h4>
-                                <a href = "">Jamming Session</a>
+                                <a href = "" data-toggle="modal" data-target="#Jamming">Jamming Session</a>
                             </h4>
                             <span></span>
                         </div>
@@ -216,7 +343,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         </div>
                         <div class="down-content">
                             <h4>
-                            <a href = "">Recording Session</a>
+                            <a href = "" data-toggle="modal" data-target="#Recording">Recording Session</a>
                             </h4>
                             <span></span>
                         </div>
@@ -235,7 +362,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         </div>
                         <div class="down-content">
                             <h4>
-                            <a href = "">Music Class Session</a>
+                            <a href = "" data-toggle="modal" data-target="#MusicClass">Music Class Session</a>
                             </h4>
                             <span></span>
                         </div>

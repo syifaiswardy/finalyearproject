@@ -15,6 +15,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Storage;
 
 
+
 class profilePage extends Controller
 {
     // function showProfile(){
@@ -58,7 +59,7 @@ class profilePage extends Controller
         $booking->end_datetime = $request->endDateTime;
         $booking->booked_room = $request->bookroom;
         $booking->booked_type = $request->booktype;
-        $booking->booked_type = $request->booktype;
+        $booking->booking_package = $request->bookpackage;
         
         if ($request->hasFile('file_path')) 
         {
@@ -76,39 +77,13 @@ class profilePage extends Controller
         $booking->name_file= $name;
         $booking->size_file = $size;
         $booking->save();
-        // Store the file name in a session
-        // $request->session()->flash('uploadedFileName', $name);
 
+        $filePath = asset('storage/' . $booking->file_path);
+        $request->session()->flash('filePath', $filePath);
+        
         return redirect()->back()->with('success', 'File uploaded successfully')->with('fileName', $name);
 
         }
-
-        
-
-        // $booking->file_path = $request->file_path -> store('public/upload');
-
-        // if ($request->hasFile('file_path')) 
-        // {
-        //     $destination = 'public/upload/'.$booking->file_path;
-        //     if(File::exists($destination))
-        //     {
-        //         File::delete($destination);
-        //     }
-
-        //     $file = $request->file('file_path');
-
-        //     // Check for file upload errors
-        //     if ($file->isValid()) {
-        //         $extension = $file->getClientOriginalExtension();
-        //         $filename = time() . '.' . $extension;
-        //         $file->move('public/upload/', $filename);
-        //         $booking->file_path = $filename;
-
-        //     } else {
-        //         return redirect()->back()->with('error', 'Error uploading file: ', $file->getErrorMessage());
-        //     }
-        // }
-        
 
     }
 

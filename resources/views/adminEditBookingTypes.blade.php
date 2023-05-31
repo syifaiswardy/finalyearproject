@@ -83,6 +83,8 @@
 
                     </div>
                     <button type="submit" class="btn btn-primary mr-2 float-right" style="background-color:#F0CF65;color:black;">Update</button>
+                    <!-- <button type="submit" class="btn btn-danger mr-2 float-right" >Delete</button> -->
+
                   </form>
 
                 </div>

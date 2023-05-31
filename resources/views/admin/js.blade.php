@@ -18,4 +18,6 @@
   <!-- Custom js for this page-->
   <script src="{{url('admin template/js/dashboard.js')}}"></script>
   <script src="{{url('admin template/js/Chart.roundedBarCharts.js')}}"></script>
+  <script src="{{url('admin template/js/chart.js')}}"></script>
+
   <!-- End custom js for this page-->

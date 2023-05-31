@@ -14,13 +14,31 @@ class calendarControl extends Controller
         
 
         foreach($bookings as $book){
+            $color = null;
+            if ($book->booked_type == "Jamming")
+            {
+                $color = '#E75D5D';
+            }
+            else if($book->booked_type == "Recording")
+            {
+                $color = '#E79F5D';
+            }
+            else if ($book->booked_type == "Music Class")
+            {
+                $color = '#E7C15E';
+            }
+            else 
+            {
+                $color = '#FFFF';
+            }
             $events[]=[
                 'title' =>$book->booked_type,
-                'startDate' =>$book->start_datetime,
-                'endDate' =>$book->end_datetime,
+                'start' =>$book->start_datetime,
+                'end' =>$book->end_datetime,
+                'color' => $color,
             ];
         }
-        return view ("adminCalendar",['events'=> $events]);
+        return view ("adminCalendar",compact('events'));
         // return view("adminCalendar");
     }
 }

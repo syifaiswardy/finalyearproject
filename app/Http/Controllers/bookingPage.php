@@ -22,13 +22,31 @@ class bookingPage extends Controller
         
 
         foreach($bookings as $book){
+            $color = null;
+            if ($book->booked_type == "Jamming")
+            {
+                $color = '#E75D5D';
+            }
+            else if($book->booked_type == "Recording")
+            {
+                $color = '#E79F5D';
+            }
+            else if ($book->booked_type == "Music Class")
+            {
+                $color = '#E7C15E';
+            }
+            else 
+            {
+                $color = '#FFFF';
+            }
             $events[]=[
                 'title' =>$book->booked_type,
-                'startDate' =>$book->start_datetime,
-                'endDate' =>$book->end_datetime,
+                'start' =>$book->start_datetime,
+                'end' =>$book->end_datetime,
+                'color' => $color,
             ];
         }
-        return view ("booking",['events'=> $events]);
+        return view ("booking",compact("events"));
     }
 
     function show(){
@@ -44,7 +62,7 @@ class bookingPage extends Controller
     public function store(Request $p){
         $validator = Validator::make($p->all(), [
             'startDateTime' => 'required|date|after:now',
-            'endDateTime' => 'required|date|after:startDateTime',
+            'endDateTime' => 'required|date|after:startDateTime'. $p->startDateTime,
             // other validation rules here
         ]);
         // Check if the selected dates are not already booked
@@ -75,6 +93,8 @@ class bookingPage extends Controller
         $store->booked_room = $p->bookingRoom;
         $store->booked_type = $p->BookingType;
         $store->booking_package = $p->package;
+        $store->booking_fee = str_replace('RM', '', $p->bookingfee);
+        $store->total_payment = str_replace('RM', '', $p->totalfee);
         $store->rentEquip = implode(',', $p->input('equip', []));
         $store->save();
     

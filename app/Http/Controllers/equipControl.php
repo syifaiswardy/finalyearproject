@@ -51,4 +51,23 @@ class equipControl extends Controller
         return redirect('/equipment');
     }
 
+    public function deleteEquip($id){
+
+        $equip = DB::table('equipments')->where('id', $id)->first();
+
+        return view("adminDeleteEquipments", compact('equip'));
+    
+    }
+
+    public function destroyEquip($id)
+    {
+        try {
+            DB::delete('delete from equipments where id = ?', [$id]);
+
+            return redirect('/equipment')->with('success', 'Booking type deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect('/equipment')->with('error', 'Failed to delete booking type.');
+        }
+    }
+
 }

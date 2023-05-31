@@ -149,7 +149,7 @@ https://templatemo.com/tm-558-klassy-cafe
                           @else
                           <td>{{$display['rentEquip']}}</td>    
                           @endif
-                          <td> RM 0.00 </td>
+                          <td> RM {{$display['total_payment']}} </td>
                           <td>
                             <a href={{"upload/".$display['id']}} data-toggle="" data-target="">
                               <img src="assets/images/upload-file-icon.png"></img>

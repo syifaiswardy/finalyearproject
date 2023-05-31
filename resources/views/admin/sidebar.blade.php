@@ -14,7 +14,7 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="{{url('/calendar')}}">Calendar Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('/calendar')}}">Booking Calendar</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('/custbook')}}">Customer Bookings</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('/bookingtype')}}">Booking Types</a></li>
               </ul>

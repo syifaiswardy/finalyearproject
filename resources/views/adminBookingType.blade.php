@@ -25,8 +25,21 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+        @if(session('success'))
+                <div class="alert alert-success">
+                  {{ session('success') }}
+                </div>
+              @endif
+
+              @if(session('error'))
+                <div class="alert alert-danger">
+                  {{ session('error') }}
+                </div>
+              @endif
           <div class="row">
           <div class="col-lg-12 grid-margin stretch-card">
+ 
+
               <div class="card">
                 <div class="card-body">
                   <div class = "float-left">
@@ -81,9 +94,10 @@
                             </a>
                           </td>
                           <td>
-                            <a href="">
+                            <a href="{{"deleteBookType/".$display->id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12Z"/></svg>
                             </a>
+                            
                           </td>
                         </tr>
                       @endforeach
@@ -98,34 +112,33 @@
             </div>
           </div>
 
-            <!-- <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title">Advanced Table</p>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="table-responsive">
-                        <table id="example" class="display expandable-table" style="width:100%">
-                          <thead>
-                            <tr>
-                              <th>Quote#</th>
-                              <th>Product</th>
-                              <th>Business type</th>
-                              <th>Policy holder</th>
-                              <th>Premium</th>
-                              <th>Status</th>
-                              <th>Updated at</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                      </table>
+          <!-- <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
                       </div>
-                    </div>
+                      <div class="modal-body">
+                          <p>Are you sure you want to delete this record?</p>
+                      </div>
+                      <div class="modal-footer">
+                      <form id="deleteForm" class="forms-sample" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>
+
+                      </div>
                   </div>
-                  </div>
-                </div>
               </div>
-            </div> -->
+          </div> -->
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -141,6 +154,24 @@
   <!-- container-scroller -->
 
   @include("admin.js")
+  <script>
+    $(document).ready(function() {
+        $('#confirmDeleteModal').on('show.bs.modal', function(event) {
+            var deleteUrl = $(event.relatedTarget).data('delete-url');
+            $("#deleteForm").attr("action", deleteUrl);
+        });
+
+        $("#deleteForm").submit(function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            if (confirm('Are you sure you want to delete this record?')) {
+                this.submit(); // Submit the form
+            }
+        });
+    });
+  </script>
+
+
 </body>
 
 </html>
