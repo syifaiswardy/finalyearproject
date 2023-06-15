@@ -65,6 +65,11 @@ class bookingPage extends Controller
             'endDateTime' => 'required|date|after:startDateTime'. $p->startDateTime,
             // other validation rules here
         ]);
+        $validator->after(function ($validator) use ($p) {
+            if ($p->startDateTime > $p->endDateTime) {
+                $validator->errors()->add('endDateTime', 'The end date must be greater than the start date.');
+            }
+        });
         // Check if the selected dates are not already booked
         $existingBookings = Booking::whereBetween('start_datetime', [$p->startDateTime, $p->endDateTime])
             ->orWhereBetween('end_datetime', [$p->startDateTime, $p->endDateTime])

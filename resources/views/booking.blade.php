@@ -110,8 +110,7 @@ https://templatemo.com/tm-558-klassy-cafe
     @include("customer.footer")
     <!-- ***** Footer End ***** -->
 
-    <!-- fullCalendar Script 
-    error cannot display data from database to calendar-->
+    <!-- fullCalendar Script -->
     <script>
         $(document).ready(function() {
             var bookings = @json($events);

@@ -200,12 +200,12 @@ https://templatemo.com/tm-558-klassy-cafe
                     <br>
                     <button type="button" class="btn btn-dark" onclick="calculateTotalFee()">Calculate Total Fee</button>
                     <div class="form-group">
-                            <label>Booking Fee</label>
-                            <input type="text" class="form-control" id="bookingFeeDisplay" name = "bookingfee" value="" placeholder="RM0.00" readonly>
+                            <label>Service Fee</label>
+                            <input type="text" class="form-control" id="bookingFeeDisplay" name = "bookingfee" value="" placeholder="RM0.00" required>
                     </div>
                     <div class="form-group">
                             <label>Total Fee (with Equipment)</label>
-                            <input type="text" class="form-control" id="totalFeeDisplay" name = "totalfee" placeholder="RM0.00" readonly>
+                            <input type="text" class="form-control" id="totalFeeDisplay" name = "totalfee" placeholder="RM0.00" required>
                     </div>
                     <!-- <div class="form-check form-check-flat form-check-primary">
                       <label class="form-check-label">
