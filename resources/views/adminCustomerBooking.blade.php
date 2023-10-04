@@ -96,7 +96,7 @@
                           @endif
 
                         @if(empty($display->booking_package))
-                          <td style="color:#grey;">-</td>
+                          <td style="color:grey;">-</td>
                           @elseif($display->booking_package =='Full Package')
                             <td style="color:#E79F5D;font-weight:bold;">{{$display->booking_package}}</td>
                           @elseif($display->booking_package =='Half Package')
