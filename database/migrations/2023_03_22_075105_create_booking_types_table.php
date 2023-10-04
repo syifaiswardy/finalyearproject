@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('booking_types', function (Blueprint $table) {
             $table->id();
             $table->string("booking_name");
-            $table->string("booking_desc");
-            $table->string("booking_package");
-            $table->string("booking_packageDesc");
+            $table->string("booking_desc")->nullable();
+            $table->string("booking_package")->nullable();
+            $table->string("booking_packageDesc")->nullable();
             $table->double("booking_price");
             $table->timestamps();
         });
