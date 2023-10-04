@@ -199,7 +199,7 @@ https://templatemo.com/tm-558-klassy-cafe
                       <br>
 
                       <label  style="font-weight:bold; font-size:20px;">Booking Price:</label><br>
-                      <label style="color:#;">RM 35/hour</label><br>
+                      <label">RM 35/hour</label><br>
                       <a href= "/bookform" type="button" class="btn btn-warning">Book Now!</a>
                       
                     </div>
@@ -240,15 +240,15 @@ https://templatemo.com/tm-558-klassy-cafe
 
                       <label  style="font-weight:bold; font-size:17px;">Full Package</label><br>
                       <label  style="font-size:15px;">Lyrics, arrangements, mixing and mastering are provided</label><br>
-                      <label style="color:#;">RM 5000</label><br><br>
+                      <label>RM 5000</label><br><br>
 
                       <label  style="font-weight:bold; font-size:17px;">Half Package</label><br>
                       <label  style="font-size:15px;">Only arrangements, mixing and mastering are provided</label><br>
-                      <label style="color:#;">RM 3500</label><br><br>
+                      <label>RM 3500</label><br><br>
 
                       <label  style="font-weight:bold; font-size:17px;">Vocal or Voiceover only</label><br>
                       <label  style="font-size:15px;">Record vocal for singers or any voiceover</label><br>
-                      <label style="color:#;">RM 50/hour</label><br><br>
+                      <label>RM 50/hour</label><br><br>
 
                       <a href= "/bookform" type="button" class="btn btn-warning">Book Now!</a>
                       
@@ -287,7 +287,7 @@ https://templatemo.com/tm-558-klassy-cafe
                       <br>
 
                       <label  style="font-weight:bold; font-size:20px;">Booking Price:</label><br>
-                      <label style="color:#;">RM 50/hour</label><br>
+                      <label>RM 50/hour</label><br>
                       <a href= "/bookform" type="button" class="btn btn-warning">Book Now!</a>
                       
                     </div>
