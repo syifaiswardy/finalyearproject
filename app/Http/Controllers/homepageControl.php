@@ -46,7 +46,8 @@ class homepageControl extends Controller
 
             return view("adminpage", compact('username','nama','rankings', 'bookings', 'totalCustomers', 'totalBookings', 'totalJammingBookings', 'totalRecordingBookings', 'totalMusicClassBookings'));
         } else {
-            return view("homepage");
+            $booking = Booking::all();
+            return view("homepage", compact($booking));
         }
     }
 
