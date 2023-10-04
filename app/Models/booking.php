@@ -12,8 +12,8 @@ class booking extends Model
     protected $table = 'bookings';
     protected $fillable = [
         'booking_notes',
-        'start_datetime',
-        'end_datetime',
+        'start_dateTime',
+        'end_dateTime',
         'booked_room',
         'booked_type',
         'booking_package',

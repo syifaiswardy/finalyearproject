@@ -33,8 +33,8 @@ class calendarControl extends Controller
             }
             $events[]=[
                 'title' =>$book->booked_type,
-                'start' =>$book->start_datetime,
-                'end' =>$book->end_datetime,
+                'start' =>$book->start_dateTime,
+                'end' =>$book->end_dateTime,
                 'color' => $color,
             ];
         }

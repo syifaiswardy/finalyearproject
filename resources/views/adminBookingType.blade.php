@@ -74,17 +74,17 @@
                           <td>{{$display['booking_name']}}</td>
                           <td>{{$display['booking_desc']}}</td>
                           <td>
-                          @if ($display['recording_packages'] == NULL)
+                          @if ($display['booking_package'] == NULL)
                           <label>NONE</label>
                           @else
-                          {{$display['recording_packages']}}
+                          {{$display['booking_package']}}
                           </td>
                           @endif
                           <td>
-                          @if ($display['recording_packages'] == NULL)
+                          @if ($display['booking_packageDesc'] == NULL)
                           <label>NONE</label>
                           @else
-                          {{$display['recording_packagesDesc']}}
+                          {{$display['booking_packageDesc']}}
                           @endif
                           </td>
                           <td>RM {{$display['booking_price']}}</td>

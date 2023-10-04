@@ -41,11 +41,11 @@ class custBookingControl extends Controller
             // other validation rules here
         ]);
         // Check if the selected dates are not already booked
-        $existingBookings = Booking::whereBetween('start_datetime', [$p->startDateTime, $p->endDateTime])
-            ->orWhereBetween('end_datetime', [$p->startDateTime, $p->endDateTime])
+        $existingBookings = Booking::whereBetween('start_dateTime', [$p->startDateTime, $p->endDateTime])
+            ->orWhereBetween('end_dateTime', [$p->startDateTime, $p->endDateTime])
             ->orWhere(function ($query) use ($p) {
-                $query->where('start_datetime', '<', $p->startDateTime)
-                    ->where('end_datetime', '>', $p->endDateTime);
+                $query->where('start_dateTime', '<', $p->startDateTime)
+                    ->where('end_dateTime', '>', $p->endDateTime);
             })
             ->count();
 
@@ -63,8 +63,8 @@ class custBookingControl extends Controller
         $store = new booking;
         $store->user_id = $p->customer;
         $store->booking_notes = $p->notes;
-        $store->start_datetime = $p->startDateTime;
-        $store->end_datetime = $p->endDateTime;
+        $store->start_dateTime = $p->startDateTime;
+        $store->end_dateTime = $p->endDateTime;
         $store->booked_room = $p->bookingRoom;
         $store->booked_type = $p->BookingType;
         $store->booking_package = $p->package;
@@ -101,8 +101,8 @@ class custBookingControl extends Controller
         $update->user_id = $user->id;
 
         $update->booking_notes = $p->notes;
-        $update->start_datetime = $p->startDateTime;
-        $update->end_datetime = $p->endDateTime;
+        $update->start_dateTime = $p->startDateTime;
+        $update->end_dateTime = $p->endDateTime;
         $update->booked_room = $p->bookingRoom;
         $update->booked_type = $p->BookingType;
 

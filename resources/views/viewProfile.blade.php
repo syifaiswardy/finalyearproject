@@ -118,8 +118,8 @@ https://templatemo.com/tm-558-klassy-cafe
                       <tbody>
                       @foreach($list as $display)
                         <tr>
-                          <td>{{$display['start_datetime']}}</td>
-                          <td>{{$display['end_datetime']}}</td>
+                          <td>{{$display['start_dateTime']}}</td>
+                          <td>{{$display['end_dateTime']}}</td>
                           @if($display['booked_type']=='Recording')
                             <td class="badge badge-danger badge-sm badge-pill">{{$display['booked_type']}}</td>
                           @elseif($display['booked_type']=='Jamming')

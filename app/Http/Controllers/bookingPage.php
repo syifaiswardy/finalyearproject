@@ -41,8 +41,8 @@ class bookingPage extends Controller
             }
             $events[]=[
                 'title' =>$book->booked_type,
-                'start' =>$book->start_datetime,
-                'end' =>$book->end_datetime,
+                'start' =>$book->start_dateTime,
+                'end' =>$book->end_dateTime,
                 'color' => $color,
             ];
         }
@@ -71,11 +71,11 @@ class bookingPage extends Controller
             }
         });
         // Check if the selected dates are not already booked
-        $existingBookings = Booking::whereBetween('start_datetime', [$p->startDateTime, $p->endDateTime])
-            ->orWhereBetween('end_datetime', [$p->startDateTime, $p->endDateTime])
+        $existingBookings = Booking::whereBetween('start_dateTime', [$p->startDateTime, $p->endDateTime])
+            ->orWhereBetween('end_dateTime', [$p->startDateTime, $p->endDateTime])
             ->orWhere(function ($query) use ($p) {
-                $query->where('start_datetime', '<', $p->startDateTime)
-                    ->where('end_datetime', '>', $p->endDateTime);
+                $query->where('start_dateTime', '<', $p->startDateTime)
+                    ->where('end_dateTime', '>', $p->endDateTime);
             })
             ->count();
 
@@ -93,8 +93,8 @@ class bookingPage extends Controller
         $store = new booking;
         $store->user_id = auth()->user()->id;
         $store->booking_notes = $p->notes;
-        $store->start_datetime = $p->startDateTime;
-        $store->end_datetime = $p->endDateTime;
+        $store->start_dateTime = $p->startDateTime;
+        $store->end_dateTime = $p->endDateTime;
         $store->booked_room = $p->bookingRoom;
         $store->booked_type = $p->BookingType;
         $store->booking_package = $p->package;

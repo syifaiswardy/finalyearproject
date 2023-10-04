@@ -76,8 +76,8 @@
                         <td>{{$display->id}}</td>
                         <td>{{$display->user_id}}</td>
                         <td>{{$display->user_name}}</td>
-                        <td>{{$display->start_datetime}}</td>
-                        <td>{{$display->end_datetime}}</td>
+                        <td>{{$display->start_dateTime}}</td>
+                        <td>{{$display->end_dateTime}}</td>
                         
                         @if(empty($display->booking_notes))
                         <td><em>No Notes</em></td>
@@ -111,7 +111,6 @@
                           <td>{{$display->rentEquip}}</td>    
                           @endif
                           
-                        <td>{{$display->file_path}}</td>
                         <td>RM {{$display->booking_fee}}</td>
                         <td>RM {{$display->total_payment}}</td>
                         <td></td>
