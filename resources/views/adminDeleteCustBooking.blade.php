@@ -71,11 +71,11 @@
                     </div> -->
                     <div class="form-group">
                       <label>Start Date and Time</label>
-                      <input type="datetime-local" class="form-control" name= "startDateTime" value="{{$bookings->start_datetime}}" id="startDateTime" placeholder="StartDate" readonly>
+                      <input type="datetime-local" class="form-control" name= "startDateTime" value="{{$bookings->start_dateTime}}" id="startDateTime" placeholder="StartDate" readonly>
                     </div>
                     <div class="form-group">
                       <label>End Date and Time</label>
-                      <input type="datetime-local" class="form-control" name= "endDateTime" id="endDateTime" value="{{$bookings->end_datetime}}" placeholder="EndDate" readonly>
+                      <input type="datetime-local" class="form-control" name= "endDateTime" id="endDateTime" value="{{$bookings->end_dateTime}}" placeholder="EndDate" readonly>
                     </div>
                     <div class="form-group">
                         <label>Choose Booking Type</label>

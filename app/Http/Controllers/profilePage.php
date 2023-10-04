@@ -55,8 +55,8 @@ class profilePage extends Controller
     {
         $booking = Booking::find($id);
         $booking->booking_notes = $request->notes;
-        $booking->start_datetime = $request->startDateTime;
-        $booking->end_datetime = $request->endDateTime;
+        $booking->start_dateTime = $request->startDateTime;
+        $booking->end_dateTime = $request->endDateTime;
         $booking->booked_room = $request->bookroom;
         $booking->booked_type = $request->booktype;
         $booking->booking_package = $request->bookpackage;

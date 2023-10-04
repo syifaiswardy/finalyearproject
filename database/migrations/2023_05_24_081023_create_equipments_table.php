@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("equip_name");
             $table->double("rent_price");
-            $table->unsignedBigInteger('booking_id'); // Foreign key column
-
+            $table->unsignedBigInteger('booking_id')->nullable(); // Foreign key column
             $table->foreign('booking_id')
                 ->references('id')
                 ->on('bookings')

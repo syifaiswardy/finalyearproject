@@ -76,8 +76,8 @@
                         <td>{{$display->id}}</td>
                         <td>{{$display->user_id}}</td>
                         <td>{{$display->user_name}}</td>
-                        <td>{{$display->start_datetime}}</td>
-                        <td>{{$display->end_datetime}}</td>
+                        <td>{{$display->start_dateTime}}</td>
+                        <td>{{$display->end_dateTime}}</td>
                         
                         @if(empty($display->booking_notes))
                         <td><em>No Notes</em></td>
@@ -96,7 +96,7 @@
                           @endif
 
                         @if(empty($display->booking_package))
-                          <td style="color:#grey;">-</td>
+                          <td style="color:grey;">-</td>
                           @elseif($display->booking_package =='Full Package')
                             <td style="color:#E79F5D;font-weight:bold;">{{$display->booking_package}}</td>
                           @elseif($display->booking_package =='Half Package')
@@ -111,7 +111,6 @@
                           <td>{{$display->rentEquip}}</td>    
                           @endif
                           
-                        <td>{{$display->file_path}}</td>
                         <td>RM {{$display->booking_fee}}</td>
                         <td>RM {{$display->total_payment}}</td>
                         <td></td>

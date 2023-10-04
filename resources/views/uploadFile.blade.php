@@ -120,11 +120,11 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h4 class="card-title">Booking details</h4>
                             <div class="form-group">
                             <label>Start Date and Time</label>
-                            <input type="datetime-local" class="form-control" name= "startDateTime" id="startDateTime" value="{{$bookings->start_datetime}}" readonly>
+                            <input type="datetime-local" class="form-control" name= "startDateTime" id="startDateTime" value="{{$bookings->start_dateTime}}" readonly>
                             </div>
                             <div class="form-group">
                             <label>End Date and Time</label>
-                            <input type="datetime-local" class="form-control" name= "endDateTime" id="endDateTime" value="{{$bookings->end_datetime}}" readonly>
+                            <input type="datetime-local" class="form-control" name= "endDateTime" id="endDateTime" value="{{$bookings->end_dateTime}}" readonly>
                             </div>
                             <div class="form-group">
                             <label>Booking Type </label>
